@@ -1,0 +1,64 @@
+
+import React from "react";
+import styled from "styled-components";
+import { mobile } from "../responsive";
+
+export const Newsletter = () => {
+  return (
+    <Container>
+      <Title>Boletin informativo</Title>
+      <Description>Obten noticias de proximos productos que estaran disponibles</Description>
+      <InputContainer>
+        <Input placeholder="ejemplo@correo.com" />
+        <Button>
+            Quiero suscribirme
+       
+        </Button>
+      </InputContainer>
+    </Container>
+  );
+};
+const Container = styled.div`
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fcf5f5;
+  flex-direction: column;
+`;
+const Title = styled.h1`
+font-size: 70px;
+margin-bottom: 20px;
+${mobile({ fontSize: "50px", textAlign: "center" })}
+`;
+const Description = styled.div`
+font-size: 24px;
+font-weight: 300;
+margin-bottom: 20px;
+${mobile({ textAlign: "center" })}
+`;
+const InputContainer = styled.div`
+width: 50%;
+height: 40px;
+background-color: white;
+display: flex;
+justify-content: center;
+border: 1px solid lightgray;
+border-radius: 4px;
+${mobile({ with: "90%" })}
+`;
+const Input = styled.input`
+border: none;
+padding-left: 20px;
+flex: 8;
+
+`;
+const Button = styled.button`
+border: none;
+flex:2;
+background-color: teal;
+color: white;
+cursor: pointer;
+border-radius: 4px;
+
+`;

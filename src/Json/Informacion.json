@@ -1,0 +1,51 @@
+{
+  "Navbar": [
+    { "item": "Home", "to": "/" },
+    { "item": "Acerca de", "to": "/acercade" },
+    { "item": "Iniciar Sesion", "to": "/login" }
+  ],
+
+  "sliderItems": [
+    {
+      "id": 1,
+      "img": "https://stylelovely.com/wp-content/uploads/2020/02/productos-skincare.jpg",
+      "title": "¡Oferta!",
+      "desc": "Ahorra un 10% en tus compras superiores a $50",
+      "bg": "f5fafd"
+    },
+    {
+      "id": 2,
+      "img": "https://img.vixdata.io/pd/jpg-large/es/sites/default/files/p/productos-basicos-para-tu-rutina-de-skincare.jpg",
+      "title": "Productos",
+      "desc": "Encontraras los mejores productos cara el cuidado de tu piel",
+      "bg": "fcf1ed"
+    },
+    {
+      "id": 3,
+      "img": "https://images.everydayhealth.com/images/a-comprehensive-guide-to-using-acids-in-your-skin-care-routine-722x406.jpg",
+      "title": "Calidad asegurada",
+      "desc": "Lorem ipsum",
+      "bg": "fbf0f4"
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "img": "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "title": "SHIRT STYLE!",
+      "cat": "gatitos"
+    },
+    {
+      "id": 2,
+      "img": "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "title": "LOUNGEWEAR LOVE",
+      "cat": "men"
+    },
+    {
+      "id": 3,
+      "img": "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+      "title": "LIGHT JACKETS",
+      "cat": "cremas"
+    }
+  ]
+}
