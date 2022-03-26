@@ -25,13 +25,13 @@ const Login = () => {
       <input
         style={{ padding: 10, marginBottom: 20 }}
         type="text"
-        placeholder="username"
+        placeholder="Nombre de usuario"
         onChange={(e) => setUsername(e.target.value)}
       />
       <input
         style={{ padding: 10, marginBottom: 20 }}
         type="password"
-        placeholder="password"
+        placeholder="Contrasenia"
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleClick} style={{ padding: 10, width:100 }}>
