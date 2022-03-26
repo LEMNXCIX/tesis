@@ -5,8 +5,13 @@ import {
   FaCog,
   FaGlobe,
 } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { logOut } from "../redux/userRedux";
+import { useSelector } from "react-redux";
 
 export const Topbar = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <Container>
       <Wrapper>
@@ -29,6 +34,9 @@ export const Topbar = () => {
             src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
             alt=""
           />
+          {user && (
+            <MenuItems onClick={()=>dispatch(logOut())}>Cerrar Sesion</MenuItems>
+          )}
         </Rigth>
       </Wrapper>
     </Container>
@@ -88,3 +96,4 @@ const Avatar = styled.img`
   border-radius: 50%;
   cursor: pointer;
 `;
+const MenuItems = styled.div``

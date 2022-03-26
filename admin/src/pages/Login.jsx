@@ -1,12 +1,15 @@
+import styled from "@emotion/styled";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { login } from "../redux/apiCalls";
+import { useDispatch, useSelector } from "react-redux";
+import { login, mensajeApiCall } from "../redux/apiCalls";
 
 const Login = () => {
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-
+  const { isFetching, error } = useSelector((state) => state.user);
+  console.log(useSelector((state) => state.user));
   const handleClick = (e) => {
     e.preventDefault();
     login(dispatch, { username, password });
@@ -37,8 +40,18 @@ const Login = () => {
       <button onClick={handleClick} style={{ padding: 10, width:100 }}>
         Login
       </button>
+      {error &&  <Error>{mensajeApiCall}</Error>
+      }
+    
     </div>
   );
 };
+const Error = styled.span`
+  color: red;
+  text-align: center;
+  background-color: #ff00003b;
+  border-radius: 4px;
+  padding: 10px;
+`;
 
 export default Login;
