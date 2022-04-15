@@ -4,19 +4,26 @@ import { publicRequest } from "../requestMetods";
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
-    const res = await publicRequest.post("/auth/login", user).catch(function(error){
-      if(error.response){
-        console.log(error.response.data)
-        mensajeApiCall = error.response.data;
-      }
-    });
+    const res = await publicRequest
+      .post("/auth/login", user)
+      .catch(function(error) {
+        if (error.response) {
+          console.log(error.response.data);
+          mensajeError = error.response.data;
+        }
+      });
+    console.log(res.data.mensaje);
+    mensajeApiCall = "se ha iniciado sesion";
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
-    
   }
 };
-export let mensajeApiCall = "";
-export const logout = async (dispatch)=>{
+
+export const logout = async (dispatch) => {
+  mensajeApiCall = "Se cerro sesion";
+  console.log("cerrar sesion");
   dispatch(logOut());
-}
+};
+export let mensajeApiCall;
+export let mensajeError = "";

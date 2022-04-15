@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 
 export const Register = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Container>
       <Wrapper>
@@ -59,10 +62,12 @@ font-size: 12px;
 margin: 20px 0px;
 `;
 const Button= styled.button`
-padding: 15px;
-width: 40%;
-padding: 15px 0px;
-border-radius: 4px;
-cursor: pointer;
-${mobile({ width: "100%" })}
+padding: 10px;
+  font-size: 16px;
+  background-color: transparent;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 2px solid #313131;
+  background: #ffffffb4;
+  width: 100%;
 `;

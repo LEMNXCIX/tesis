@@ -8,14 +8,21 @@ import { Link } from "react-router-dom";
 import { Login } from "../pages/Login";
 import { useDispatch } from "react-redux";
 import { logOut } from "../redux/userRedux";
-
+import { Alert } from "../elements/Alert";
 
 export const Navbar = ({ user }) => {
   const cantidad = useSelector((state) => state.cart.cantidad);
-
   const [estadoModal, cambiarEstadoModal] = useState(false);
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
-  
+
+  function funcionCerrar() {
+    dispatch(logOut());
+    abrir();
+  }
+  function abrir() {
+    setOpen(true);
+  }
   return (
     <Container>
       <Wrapper>
@@ -28,25 +35,24 @@ export const Navbar = ({ user }) => {
           </SearchContainer>
         </Left>
         <Center>
-          <Link to="/" style={{textDecoration:"none"}}>
+          <Enlace to="/">
             <Logo>Neutra.</Logo>
-          </Link>
+          </Enlace>
         </Center>
         <Right>
-          <Link to="/cart" style={{textDecoration:"none", color:"black"}}>
+          <Enlace to="/cart">
             <MenuItems>
-              <FaShoppingCart />
+              <Cart />
               <Badge>{cantidad}</Badge>
             </MenuItems>
-          </Link>
+          </Enlace>
           {!user && (
             <MenuItems onClick={() => cambiarEstadoModal(!estadoModal)}>
-              Iniciar Sesion
+              <TipoBoton>Iniciar Sesion</TipoBoton>
             </MenuItems>
           )}
-
           {user && (
-            <MenuItems onClick={()=>dispatch(logOut())}>Cerrar Sesion</MenuItems>
+            <MenuItems onClick={() => funcionCerrar()}>Cerrar Sesion</MenuItems>
           )}
           <Modal
             estado={estadoModal}
@@ -62,11 +68,12 @@ export const Navbar = ({ user }) => {
               <p>ANFDLADN</p>
               <Button>Aceptar</Button>
             </Contenido> */}
-           
-            <Login cerrar={cambiarEstadoModal} user ={user}/>
+
+            <Login cerrar={cambiarEstadoModal} user={user} setOpen={setOpen} />
           </Modal>
         </Right>
       </Wrapper>
+      <Alert open={open} setOpen={setOpen} />
     </Container>
   );
 };
@@ -126,7 +133,6 @@ const Right = styled.div`
   ${mobile({ justifyContent: "center" })}
 `;
 const MenuItems = styled.div`
-  font-size: 14px;
   cursor: pointer;
   margin-left: 20px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
@@ -141,38 +147,22 @@ const Badge = styled.span`
   left: -5px;
   font-size: 10px;
   border-radius: 50px;
+  ${mobile({ fontSize: "14px" })}
 `;
-// const Button = styled.button`
-//   display: block;
-//   padding: 10px 30px;
-//   border-radius: 4px;
-//   color: #fff;
-//   border: none;
-//   background: #1766dc;
-//   cursor: pointer;
-//   font-family: "Roboto", sans-serif;
-//   font-weight: 500;
-//   transition: 0.3s ease all;
-//   &:hover {
-//     background: #0066ff;
-//   }
-// `;
-// const Contenido = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   h1 {
-//     font-size: 42px;
-//     font-weight: 700;
-//     margin-bottom: 10px;
-//   }
-//   p {
-//     font-size: 18px;
-//     margin-bottom: 20px;
-//   }
-//   img {
-//     width: 100%;
-//     vertical-align: top;
-//     border-radius: 3px;
-//   }
-// `;
+const Enlace = styled(Link)`
+  text-decoration: none;
+  color: black;
+`;
+const TipoBoton = styled.div`
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  
+  border: 2px solid #313131;
+  background: #ffffffb4;
+`;
+
+const Cart = styled(FaShoppingCart)`
+   ${mobile({ fontSize: "20px" })}
+`

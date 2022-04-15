@@ -3,7 +3,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { useState } from "react/cjs/react.development";
 import styled from "styled-components";
 import Data from "../Json/Informacion.json";
-import {mobile} from "../responsive"
+
 
 export const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -104,9 +104,11 @@ const Desc = styled.p`
   letter-spacing: 1px;
 `;
 const Button = styled.button`
-  padding: 10px;
-  font-size: 20px;
+ padding: 10px;
+  font-size: 16px;
   background-color: transparent;
   cursor: pointer;
   border-radius: 4px;
+  border: 2px solid #313131;
+  background: #ffffffb4;
 `;

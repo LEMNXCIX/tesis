@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  FaBell,
-  FaCog,
-  FaGlobe,
-} from "react-icons/fa";
+import { FaBell, FaCog, FaGlobe } from "react-icons/fa";
+import { MdBell,MdLogout,MdSettings } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { logOut } from "../redux/userRedux";
 import { useSelector } from "react-redux";
@@ -28,14 +25,16 @@ export const Topbar = () => {
             <IconBadge>3</IconBadge>
           </IconContainer>
           <IconContainer>
-            <FaCog />
+            <MdSettings />
           </IconContainer>
           <Avatar
             src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
             alt=""
           />
           {user && (
-            <MenuItems onClick={()=>dispatch(logOut())}>Cerrar Sesion</MenuItems>
+            <MenuItems onClick={() => dispatch(logOut())}>
+              <MdLogout />
+            </MenuItems>
           )}
         </Rigth>
       </Wrapper>
@@ -73,12 +72,12 @@ const IconContainer = styled.div`
   position: relative;
   cursor: pointer;
   margin-right: 20px;
-  color: #555;
+  //color: #555;
   font-size: 20px;
 `;
 const IconBadge = styled.span`
-width: 18px;
-height: 18px;
+  width: 18px;
+  height: 18px;
   position: absolute;
   top: -5px;
   right: -10px;
@@ -96,4 +95,13 @@ const Avatar = styled.img`
   border-radius: 50%;
   cursor: pointer;
 `;
-const MenuItems = styled.div``
+const MenuItems = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 600;
+`;

@@ -1,15 +1,16 @@
 import axios from "axios";
 
 const BASE_URL = "http://localhost:5000/api/";
-const usuario =JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;
+const usuario = JSON.parse(
+  JSON.parse(localStorage.getItem("persist:root")).user
+).currentUser;
 
-let TOKEN
-if(usuario === null){
-  console.log("No hay usuario")
-  TOKEN =""
-} else{
-
-   TOKEN = usuario.accesToken;
+let TOKEN;
+if (usuario === null) {
+  console.log("No hay usuario");
+  TOKEN = "";
+} else {
+  TOKEN = usuario.accesToken;
 }
 //usuario === "null" ? TOKEN ="" : TOKEN = usuario;
 //console.log(JSON.parse(localStorage.getItem("persist:root")).user)

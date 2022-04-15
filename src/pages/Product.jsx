@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { Announcement } from "../components/Announcement";
 import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
 import { Newsletter } from "../components/Newsletter";
 import { publicRequest } from "../requestMetods";
 import { mobile } from "../responsive";
@@ -43,11 +41,11 @@ export const Product = () => {
       addProduct({ ...product, cantidad })
     );
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Container>
-      <Navbar />
-      <Announcement />
       <Wrapper>
         <ImageContainer>
           <Image src={product.img} />

@@ -45,10 +45,11 @@ const Title = styled.h1`
   margin-bottom: 20px;
 `;
 const Button = styled.button`
-  border: none;
-  font-size: 20px;
   padding: 10px;
-  background-color: white;
+  font-size: 16px;
+  background-color: transparent;
   cursor: pointer;
   border-radius: 4px;
+  border: 2px solid #313131;
+  background: #ffffffb4;
 `;

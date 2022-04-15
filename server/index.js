@@ -7,6 +7,7 @@ const authRoute = require("./routes/auth");
 const productRoute = require("./routes/products");
 const orderRoute = require("./routes/order");
 const cartRoute = require("./routes/cart");
+const slideRoute = require("./routes/slideshow");
 const cors = require("cors");
 
 //? debe ir en este orden para evitar un error en el servidor
@@ -37,6 +38,7 @@ app.use("/api/product", productRoute);
 app.use("/api/order", orderRoute);
 app.use("/api/cart", cartRoute);
 app.use("/api/checkout", stripeRoute);
+app.use("/api/slide", slideRoute);
 
 //LEVANTA EL SERVIDOR
 app.listen(process.env.PORT || 5000, () => {

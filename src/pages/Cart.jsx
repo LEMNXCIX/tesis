@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import styled from "styled-components";
-import { Announcement } from "../components/Announcement";
 import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
 import { mobile } from "../responsive";
 import { useSelector } from "react-redux";
 
 export const Cart = () => {
   const cart = useSelector(state=>state.cart)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Container>
-        <Navbar/>
-        <Announcement/>
       <Wrapper>
         <Title>Tu carrito</Title>
         <Top>
@@ -185,12 +184,7 @@ const ProductPrice = styled.div`
   
 `;
 
-const Hr = styled.hr`
-  background-color: #eee;
-  border: none;
-  height: 1px;
-  margin: 20px;
-`;
+
 
 const Summary = styled.div`
   flex: 1;

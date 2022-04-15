@@ -47,6 +47,7 @@ const Login = () => {
   );
 };
 const Error = styled.span`
+margin-top: 10px;
   color: red;
   text-align: center;
   background-color: #ff00003b;

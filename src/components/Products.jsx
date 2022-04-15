@@ -16,7 +16,6 @@ export const Products = ({ cat, filter, sort }) => {
             : "http://localhost:5000/api/product"
         );
         setProducts(res.data);
-        console.log(res);
       } catch (err) {}
     };
     getProducts();

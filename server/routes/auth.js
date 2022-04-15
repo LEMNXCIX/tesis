@@ -60,7 +60,7 @@ router.post("/login", async (req, res) => {
       //?password debe ser igual a la variable del modelo que se recoge del formulario
       const { password, ...others } = user._doc; //se debe poner ._doc para que se genere sin problemas
 
-      res.status(200).json({ ...others, accesToken });
+      res.status(200).json({ ...others, accesToken, mensaje: "Se ha inicidao correctamente" });
     } catch (err) {
       // res.status(500).json(err);
     }

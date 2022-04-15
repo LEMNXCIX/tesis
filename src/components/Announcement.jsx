@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaTimes } from "react-icons/fa";
+import { mensajeApiCall } from "../redux/apiCalls";
 import styled from "styled-components";
 
 export const Announcement = () => {
@@ -9,7 +10,7 @@ export const Announcement = () => {
       {estado && (
         <Container>
           <Text>
-            Oferta!! Obten el 10% de descuento por compras superiores a $50
+            Oferta!! Obten el 10% de descuento por compras superiores a $50 {mensajeApiCall}
           </Text>
           <Cerrar onClick={() => cambiarEstado(false)}>
             <FaTimes />

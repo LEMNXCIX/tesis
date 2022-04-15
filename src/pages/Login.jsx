@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { login, mensajeApiCall } from "../redux/apiCalls";
+import { login, mensajeError } from "../redux/apiCalls";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-export const Login = ({ cerrar, user }) => {
+export const Login = ({ cerrar, user, setOpen }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const { isFetching, error } = useSelector((state) => state.user);
-
-  //si el usuario ha iniciado sesion se
+  const { isFetching, error } = useSelector((state) => state.user); //si el usuario ha iniciado sesion se
   if (user) {
     cerrar(false);
   }
   const handleClick = (e) => {
     e.preventDefault();
     login(dispatch, { username, password });
+    setOpen(true);
   };
   return (
     <Container>
@@ -32,10 +31,11 @@ export const Login = ({ cerrar, user }) => {
             placeholder="Contrasena"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button onClick={handleClick} disabled={isFetching}>
+          <Button onClick={handleClick} disabled={isFetching} opnener={true}>
             Iniciar sesion
           </Button>
-          {error && <Error>Error: {mensajeApiCall}</Error>}
+
+          {error && <Error>Error: {mensajeError}</Error>}
           <Linked>No recuerdas tu contrasena?</Linked>
           <Link to={"/registro"}>
             <Linked
@@ -83,13 +83,10 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-  width: 100%;
-  border: none;
-  padding: 15px 20px;
-  background-color: teal;
-  color: white;
+  padding: 10px;
+  font-size: 16px;
+  background-color: transparent;
   cursor: pointer;
-  margin-bottom: 10px;
   border-radius: 4px;
   ${mobile({ width: "100%" })}
   &:disabled {

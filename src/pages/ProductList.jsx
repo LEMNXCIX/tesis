@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Navbar } from "../components/Navbar";
-import { Announcement } from "../components/Announcement";
 import { Products } from "../components/Products";
 import { Newsletter } from "../components/Newsletter";
 import { Footer } from "../components/Footer";
@@ -21,10 +19,11 @@ export const ProductList = () => {
       [e.target.name]: value,
     });
   };
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
   return (
     <Container>
-      <Navbar />
-      <Announcement />
       <Title>{cat}</Title>
       <FilterContainer>
         <Filter>
