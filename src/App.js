@@ -16,7 +16,6 @@ import { Navbar } from "./components/Navbar";
 import { useSelector } from "react-redux";
 import { Announcement } from "./components/Announcement";
 
-
 function Redirect({ to }) {
   let navigate = useNavigate();
   useEffect(() => {
@@ -29,36 +28,24 @@ export const App = () => {
   const user = useSelector((state) => state.user.currentUser);
 
   return (
-    
     <Router>
       <Navbar user={user} />
-     <Announcement/>
+      <Announcement />
       <Routes>
-        <Route  exact path="/" element={<Home />} />
-      </Routes>
-      <Routes>
-        <Route  path="/productos/:categoria" element={<ProductList />} />
-      </Routes>
-      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/productos/:categoria" element={<ProductList />} />
         <Route exact path="/productos/" element={<Products />} />
-      </Routes>
-      <Routes>
         <Route path="/producto/:id" element={<Product />} />
-      </Routes>
-      <Routes>
-        <Route  exact path="/cart" element={<Cart />} />
-      </Routes>
-      <Routes>
+        <Route exact path="/cart" element={<Cart />} />
         <Route
-          
-         exact path="/login"
+          exact
+          path="/login"
           element={user ? <Redirect to="/" /> : <Login />}
         />
-      </Routes>
-      <Routes>
+
         <Route
-          
-          exact path="/registro"
+          exact
+          path="/registro"
           element={user ? <Redirect to="/" /> : <Register />}
         />
       </Routes>

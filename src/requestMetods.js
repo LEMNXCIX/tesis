@@ -17,7 +17,7 @@ if (local === null) {
   const usuario = JSON.parse(
     JSON.parse(localStorage.getItem("persist:root")).user
   ).currentUser;
-  console.log(usuario);
+  // console.log(usuario);
   TOKEN = usuario.accesToken;
 }
 

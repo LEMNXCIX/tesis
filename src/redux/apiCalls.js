@@ -8,11 +8,11 @@ export const login = async (dispatch, user) => {
       .post("/auth/login", user)
       .catch(function(error) {
         if (error.response) {
-          console.log(error.response.data);
+          // console.log(error.response.data);
           mensajeError = error.response.data;
         }
       });
-    console.log(res.data.mensaje);
+    // console.log(res.data.mensaje);
     mensajeApiCall = "se ha iniciado sesion";
     dispatch(loginSuccess(res.data));
   } catch (err) {
@@ -22,7 +22,7 @@ export const login = async (dispatch, user) => {
 
 export const logout = async (dispatch) => {
   mensajeApiCall = "Se cerro sesion";
-  console.log("cerrar sesion");
+  // console.log("cerrar sesion");
   dispatch(logOut());
 };
 export let mensajeApiCall;
