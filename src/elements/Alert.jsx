@@ -13,7 +13,6 @@ export const Alert = ({ open, setOpen }) => {
 
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
-      return;
     }
 
     setOpen(false);
@@ -39,12 +38,14 @@ export const Alert = ({ open, setOpen }) => {
   return (
     <Snackbar
       open={open}
-      autoHideDuration={6000}
+      autoHideDuration={5000}
       onClose={handleClose}
       message={mesajeRedux}
       action={action}
       anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-      TransitionComponent={TransitionUp}
+      TransitionComponent={Slide}
+      TrasitionProps={{ enter: true, exit: true }}
+      transitionDuration={{enter:100, exit:100}}
     />
   );
 };

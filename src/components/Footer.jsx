@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { Link as Enlace } from "react-router-dom";
 import { mobile } from "../responsive";
-import { FaEnvelope, FaFacebook, FaInstagram, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaInstagram,
+  FaMapMarkerAlt,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 export const Footer = () => {
   return (
@@ -15,43 +22,55 @@ export const Footer = () => {
           exercitationem iure reprehenderit suscipit.
         </Description>
         <SocialContainer>
-         <SocialIcon color="4267B2">
-            <FaFacebook/>
+          <SocialIcon color="4267B2">
+            <FaFacebook />
           </SocialIcon>
           <SocialIcon color="E1306C">
-          <FaInstagram/>
+            <FaInstagram />
           </SocialIcon>
         </SocialContainer>
       </Left>
       <Center>
         <Title>Enlaces</Title>
         <List>
-          <ListItem>Inicio</ListItem>
-          <ListItem>Categorias</ListItem>
-          <ListItem>Productos</ListItem>
-          <ListItem>Carrito</ListItem>
-          <ListItem>Terminos y condiciones</ListItem>
-          <ListItem>Acerca de nosotros</ListItem>
-          <ListItem>Categorias</ListItem>
+          <ListItem>
+            <Link to={"/"}>Inicio</Link>
+          </ListItem>
+          <ListItem>
+            <Link to={"/categorias"}>Categorias</Link>
+          </ListItem>
+          <ListItem>
+            <Link to={"/productos"}>Productos</Link>
+          </ListItem>
+          <ListItem>
+            <Link to={"/cart"}>Carrito</Link>
+          </ListItem>
+          <ListItem>
+            <Link to={"/terminos"}>Terminos y condiciones</Link>
+          </ListItem>
+          <ListItem>
+            <Link to={"/acerca"}>Acerca de nosotros</Link>
+          </ListItem>
+          
         </List>
       </Center>
       <Right>
         <Title>Contacto</Title>
         <ContactItem>
           <SocialIcon color="000000">
-              <FaMapMarkerAlt/>
+            <FaMapMarkerAlt />
           </SocialIcon>
           Santo Domingo, por ahi
         </ContactItem>
         <ContactItem>
           <SocialIcon color="000000">
-              <FaWhatsapp/>
+            <FaWhatsapp />
           </SocialIcon>
           +593 98 7654 321
         </ContactItem>
         <ContactItem>
           <SocialIcon color="000000">
-           <FaEnvelope/>
+            <FaEnvelope />
           </SocialIcon>
           contacto@micorreo.com
         </ContactItem>
@@ -131,3 +150,6 @@ const Payment = styled.img`
   width: 50%;
   ${mobile({ width: "100%" })}
 `;
+const Link = styled(Enlace)`
+color: black;
+`

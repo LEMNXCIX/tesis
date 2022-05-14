@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaTimes } from "react-icons/fa";
+import { Close } from '@mui/icons-material';
 import { mensajeApiCall } from "../redux/apiCalls";
 import styled from "styled-components";
 
@@ -13,7 +13,7 @@ export const Announcement = () => {
             Oferta!! Obten el 10% de descuento por compras superiores a $50 {mensajeApiCall}
           </Text>
           <Cerrar onClick={() => cambiarEstado(false)}>
-            <FaTimes />
+            <Close  fontSize="inherit"/>
           </Cerrar>
         </Container>
       )}
@@ -40,7 +40,7 @@ const Cerrar = styled.button`
   align-items: center;
   display: flex;
   justify-content: center;
-  right: 5px;
+  right: 05px;
   width: 10px;
   height: 100%;
   border: none;

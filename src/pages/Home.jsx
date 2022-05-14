@@ -1,23 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Categories } from "../components/Categories";
 import { Footer } from "../components/Footer";
 import { Newsletter } from "../components/Newsletter";
 import styled from "styled-components";
 import { Products } from "../components/Products";
 import { Slideshow, Slide } from "../components/SlideShow";
-import Data from "../Json/Informacion.json";
-
+import { userRequest } from "../requestMetods";
 
 export const Home = () => {
+  const [slide, setSlide] = useState([]);
+  //Traer los elementos del slider
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+    const getSlides = async () => {
+      try {
+        const res = await userRequest.get("slide");
+        setSlide(res.data);
+        console.log(res.data);
+      } catch (error) {}
+    };
+    getSlides();
+  }, []);
+  console.log(slide);
+  
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       {/* <Slider /> */}
       <Slideshow controles={true} autoplay={true}>
-        {Data.sliderItems.map((item) => (
-          <Slide key={item.id}>
+       {slide.map((item) => (
+          <Slide key={item._id}>
             
               <ImgContainer>
                 <Image draggable="false" src={item.img} />
@@ -29,7 +44,7 @@ export const Home = () => {
               <Button>Ver todos los productos</Button>
             </InfoContainer>
           </Slide>
-        ))}
+        ))} 
       </Slideshow>
       <Categories />
       <Products />
@@ -39,7 +54,7 @@ export const Home = () => {
   );
 };
 const ImgContainer = styled.div`
-   flex: 2;
+  flex: 2;
   height: 100%;
 `;
 const Image = styled.img`

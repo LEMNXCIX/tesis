@@ -1,8 +1,8 @@
 import React from 'react'
 
-export const Botones = () => {
+export const Botones = ({children}) => {
   return (
-    <Boton>Botones</Boton>
+    <Boton>{children}</Boton>
   )
 }
 const Boton = styled.button`

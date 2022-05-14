@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { Search, ShoppingCart } from '@mui/icons-material';
 import { Modal } from "./Modal";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -29,9 +29,7 @@ export const Navbar = ({ user }) => {
         <Left>
           <SearchContainer>
             <Input placeholder="Buscar " autocomplete="off" />
-            <FaSearch
-              style={{ color: "gray", fontSize: 16, cursor: "pointer" }}
-            />
+            <SearchIcon  />
           </SearchContainer>
         </Left>
         <Center>
@@ -143,8 +141,8 @@ const Badge = styled.span`
   height: 10px;
   width: 10px;
   padding: 0px 4px;
-  top: -10px;
-  left: -5px;
+  top: -15px;
+  left: -10px;
   font-size: 10px;
   border-radius: 50px;
   ${mobile({ fontSize: "14px" })}
@@ -158,11 +156,14 @@ const TipoBoton = styled.div`
   font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
-  
+
   border: 2px solid #313131;
   background: #ffffffb4;
 `;
 
-const Cart = styled(FaShoppingCart)`
-   ${mobile({ fontSize: "20px" })}
+const Cart = styled(ShoppingCart)`
+  ${mobile({ fontSize: "20px" })}
+`
+const SearchIcon = styled(Search)`
+  cursor: pointer;
 `
