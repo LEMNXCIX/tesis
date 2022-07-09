@@ -4,6 +4,7 @@ import { login, mensajeError } from "../redux/apiCalls";
 import { mobile } from "../responsive";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { ErrorOutline } from "@mui/icons-material";
 
 export const Login = ({ cerrar, user, setOpen }) => {
   const [username, setUsername] = useState("");
@@ -21,22 +22,26 @@ export const Login = ({ cerrar, user, setOpen }) => {
   return (
     <Container>
       <Wrapper>
-        <Title>Inicio de sesion</Title>
+        <Title>Inicio de sesión</Title>
         <Form>
           <Input
-            placeholder="Correo electronico o Nombre de usuario"
+            placeholder="Correo electrónico o Nombre de usuario"
             onChange={(e) => setUsername(e.target.value)}
           />
           <Input
-            placeholder="Contrasena"
+            placeholder="Contraseña"
             onChange={(e) => setPassword(e.target.value)}
           />
           <Button onClick={handleClick} disabled={isFetching} opnener={true}>
-            Iniciar sesion
+            Iniciar sesión
           </Button>
 
-          {error && <Error>Error: {mensajeError}</Error>}
-          <Linked>No recuerdas tu contrasena?</Linked>
+          {error && (
+            <Error>
+              <ErrorOutline />ㅤ Error: {mensajeError}
+            </Error>
+          )}
+          <Linked>No recuerdas tu contraseña?</Linked>
           <Link to={"/registro"}>
             <Linked
               onClick={() => {
@@ -80,6 +85,7 @@ const Input = styled.input`
   margin: 10px 0;
   padding: 10px;
   border-radius: 4px;
+  border: 2px solid #665351;
 `;
 
 const Button = styled.button`
@@ -87,10 +93,10 @@ const Button = styled.button`
   font-size: 16px;
   font-weight: 400;
   //color: #000;
-  background-color: #ffc27c;
-  color: #7c4e0a;
+  color: #665351;
+  border: 2px solid #665351;
+  background: #ffffffb4;
   //box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
-  border: none;
   cursor: pointer;
   border-radius: 4px;
   margin-bottom: 10px;
@@ -101,8 +107,9 @@ const Button = styled.button`
     cursor: not-allowed;
   }
   &:hover {
-    background-color: #fbb15c;
-    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1);
+    border: 2px solid #665351;
+    background-color: #c0aaa8;
+    color: #5a3908;
   }
 `;
 
@@ -113,9 +120,16 @@ const Linked = styled.p`
   cursor: pointer;
 `;
 const Error = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: red;
   text-align: center;
   background-color: #ff00003b;
   border-radius: 4px;
   padding: 10px;
+
+  &ErrorOutline{
+    color: red;
+  }
 `;

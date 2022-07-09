@@ -15,13 +15,11 @@ export const Home = () => {
       try {
         const res = await userRequest.get("slide");
         setSlide(res.data);
-        console.log(res.data);
       } catch (error) {}
     };
     getSlides();
   }, []);
-  console.log(slide);
-  
+
   //Llevar al inicio de la pantalla
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,20 +29,19 @@ export const Home = () => {
     <>
       {/* <Slider /> */}
       <Slideshow controles={true} autoplay={true}>
-       {slide.map((item) => (
+        {slide.map((item) => (
           <Slide key={item._id}>
-            
-              <ImgContainer>
-                <Image draggable="false" src={item.img} />
-              </ImgContainer>
-          
+            <ImgContainer>
+              <Image draggable="false" src={item.img} />
+            </ImgContainer>
+
             <InfoContainer>
               <Titlte>{item.title}</Titlte>
               <Desc>{item.desc}</Desc>
               <Button>Ver todos los productos</Button>
             </InfoContainer>
           </Slide>
-        ))} 
+        ))}
       </Slideshow>
       <Categories />
       <Products />

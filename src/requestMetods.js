@@ -3,7 +3,6 @@ import axios from "axios";
 const BASE_URL = "http://localhost:5000/api/";
 let TOKEN ="";
 const user = localStorage.getItem("persist:root");
-console.log(user)
 if(user !== null){
 
   const local = JSON.parse(JSON.parse(localStorage.getItem("persist:root")).user).currentUser;

@@ -22,8 +22,8 @@ export const Announcement = () => {
 };
 const Container = styled.div`
   position: relative;
-  background-color: #ffc27c;
-  color: #7c4e0a;
+  background-color: #ffefc9;
+  color: #625737;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -51,6 +51,6 @@ const Cerrar = styled.button`
   border-radius: 5px;
   color: #292929;
   & :hover {
-    color: #000;
+    color: #5a3908;
   }
 `;

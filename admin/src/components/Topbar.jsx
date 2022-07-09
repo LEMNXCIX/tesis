@@ -14,7 +14,7 @@ export const Topbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Logo>NeutraAdmin</Logo>
+          <Logo>Neutra.Admin</Logo>
         </Left>
         <Rigth>
           <IconContainer>

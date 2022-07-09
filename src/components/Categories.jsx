@@ -7,9 +7,9 @@ import {mobile} from "../responsive"
 export const Categories = () => {
   return (
     <>
-     
-      <Container>
       <Title>Categorías</Title>
+      <Container>
+     
         {Data.categorias.map((item) => (
           <CategoryItem item={item} key={item.id} />
         ))}
@@ -26,7 +26,6 @@ const Container = styled.div`
 const Title = styled.h1`
 padding-top: 10px;
 font-size: 20px;
-  color: black;
   letter-spacing: 3px;
   margin: 20px 0px 0px 30px;
 `;

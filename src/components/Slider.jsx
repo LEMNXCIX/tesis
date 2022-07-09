@@ -1,9 +1,8 @@
 import React from "react";
-import { ArrowForwardIos, ArrowBackIos } from '@mui/icons-material';
+import { ArrowForwardIos, ArrowBackIos } from "@mui/icons-material";
 import { useState } from "react/cjs/react.development";
 import styled from "styled-components";
 import Data from "../Json/Informacion.json";
-
 
 export const Slider = () => {
   const [slideIndex, setSlideIndex] = useState(0);
@@ -18,7 +17,7 @@ export const Slider = () => {
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleClick("left")}>
-        <ArrowForwardIos/>
+        <ArrowForwardIos />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {Data.sliderItems.map((item) => (
@@ -35,7 +34,7 @@ export const Slider = () => {
         ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
-        <ArrowBackIos />
+        <ArrowForwardIos />
       </Arrow>
     </Container>
   );
@@ -84,10 +83,10 @@ const ImgContainer = styled.div`
   height: 100%;
 `;
 const Image = styled.img`
- width: 100%;
-height: 100%;
-object-fit: cover;
-border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
 `;
 const InfoContainer = styled.div`
   flex: 1;
@@ -104,11 +103,18 @@ const Desc = styled.p`
   letter-spacing: 1px;
 `;
 const Button = styled.button`
- padding: 10px;
+  padding: 10px;
   font-size: 16px;
   background-color: transparent;
   cursor: pointer;
   border-radius: 4px;
-  border: 2px solid #313131;
+  border: 2px solid #665351;
   background: #ffffffb4;
+  color: #665351;
+  transition: 0.1s 0s ease-in-out;
+  &:hover {
+    border: 2px solid #665351;
+    background-color: #c0aaa8;
+    color: #5a3908;
+  }
 `;

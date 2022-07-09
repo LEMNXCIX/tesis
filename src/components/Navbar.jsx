@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { Search, ShoppingCart } from '@mui/icons-material';
+import {
+  Search,
+  ShoppingCart,
+  Login as LogIn,
+  Logout,
+  AdminPanelSettings,
+} from "@mui/icons-material";
 import { Modal } from "./Modal";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -29,7 +35,7 @@ export const Navbar = ({ user }) => {
         <Left>
           <SearchContainer>
             <Input placeholder="Buscar " autocomplete="off" />
-            <SearchIcon  />
+            <SearchIcon />
           </SearchContainer>
         </Left>
         <Center>
@@ -46,12 +52,31 @@ export const Navbar = ({ user }) => {
           </Enlace>
           {!user && (
             <MenuItems onClick={() => cambiarEstadoModal(!estadoModal)}>
-              <TipoBoton>Iniciar Sesión</TipoBoton>
+              <TipoBoton>
+                {" "}
+                <LogIn />
+                ㅤIniciar Sesión
+              </TipoBoton>
             </MenuItems>
           )}
+
           {user && (
-            <MenuItems onClick={() => funcionCerrar()}>Cerrar Sesión</MenuItems>
+            <MenuItems>
+              <TipoBoton>
+                <AdminPanelSettings />
+                ㅤAdmin Panel
+              </TipoBoton>
+            </MenuItems>
           )}
+          {user &&
+            user.isAdmin && (
+              <MenuItems onClick={() => funcionCerrar()}>
+                <TipoBoton>
+                  <Logout />
+                  ㅤCerrar Sesión
+                </TipoBoton>
+              </MenuItems>
+            )}
           <Modal
             estado={estadoModal}
             cambiarEstado={cambiarEstadoModal}
@@ -119,7 +144,7 @@ const Center = styled.div`
 const Logo = styled.h1`
   font-weight: bold;
   text-decoration: none;
-  color: black;
+  color: #fbb15c;
   ${mobile({ fontSize: "24px" })}
 `;
 const Right = styled.div`
@@ -132,14 +157,15 @@ const Right = styled.div`
 `;
 const MenuItems = styled.div`
   cursor: pointer;
+  color: #665351;
   margin-left: 20px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 const Badge = styled.span`
-//color: #e4c19d;
+  //color: #e4c19d;
   //background: #6d5233;
   color: #6d5233;
-  background-color: #e4c19d ;
+  background-color: #e4c19d;
   position: relative;
   height: 10px;
   width: 10px;
@@ -152,21 +178,34 @@ const Badge = styled.span`
 `;
 const Enlace = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: #665351;
 `;
 const TipoBoton = styled.div`
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
-
-  border: 2px solid #313131;
+  color: #665351;
+  border: 2px solid transparent;
   background: #ffffffb4;
+  transition: 0.1s 0s ease-in-out;
+  &:hover {
+    border: 2px solid #665351;
+    background-color: #c0aaa8;
+    color: #5a3908;
+  }
 `;
 
 const Cart = styled(ShoppingCart)`
+  color: #665351;
   ${mobile({ fontSize: "20px" })}
-`
+  &:hover {
+    color: #5a3908;
+  }
+`;
 const SearchIcon = styled(Search)`
   cursor: pointer;
-`
+`;
