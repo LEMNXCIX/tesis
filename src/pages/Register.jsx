@@ -14,11 +14,11 @@ export const Register = () => {
           <Input placeholder="Nombre" />
           <Input placeholder="Apellido" />
           <Input placeholder="Nombre de usuario " />
-        <Input placeholder="Correo electronico" />
-          <Input placeholder="Contrasena" />
-          <Input placeholder="Confirmar contrasena" />
+        <Input placeholder="Correo electrónico" />
+          <Input placeholder="Contraseña" />
+          <Input placeholder="Confirmar contraseña" />
           
-          <Agreement>Al crear una cuenta estas de acuerdo con el manejo de tu informacion personal de acuerdo con nuestra <b>Politica de privacidad</b></Agreement>
+          <Agreement>Al crear una cuenta estas de acuerdo con el manejo de tu información personal de acuerdo con nuestra <b>Política de privacidad</b></Agreement>
           <Button>Crear cuenta</Button>
         </Form>
       </Wrapper>

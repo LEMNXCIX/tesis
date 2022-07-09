@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Chart } from "../components/Chart";
-import { MdPublish } from "react-icons/md";
+import { Image } from '@mui/icons-material';
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
@@ -212,7 +212,7 @@ export const Product = () => {
             <Upload>
               <UploadImg src={product.img} alt="" />
               <label htmlFor="file">
-                <MdPublish />
+                <Image />
               </label>
               <input
                 type="file"

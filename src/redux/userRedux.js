@@ -15,18 +15,18 @@ const userSlice = createSlice({
     loginSuccess: (state, action) => {
       state.isFetching = false;
       state.currentUser = action.payload;
-      state.message = "Se ha iniciado sesion :)"
+      state.message = "Se ha iniciado sesión :)"
     },
     loginFailure: (state) => {
       state.isFetching = false;
       state.error = true;
-      state.message ="Ha ocuurido un error :("
+      state.message ="Ha ocurrido un error :("
     },
     logOut: (state) => {
       state.currentUser = null;
       state.isFetching = false;
       state.error = false;
-      state.message = "Se ha cerrado sesion :/"
+      state.message = "Se ha cerrado sesión :/"
     },
   },
 });

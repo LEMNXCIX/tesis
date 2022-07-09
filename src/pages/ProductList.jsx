@@ -27,7 +27,7 @@ export const ProductList = () => {
       <Title>{cat}</Title>
       <FilterContainer>
         <Filter>
-          <FilterText>Categorias</FilterText>
+          <FilterText>Categorías</FilterText>
           <Select name="categorias" onChange={handleFilters}>
             <Options>Piel</Options>
             <Options>Cremas</Options>

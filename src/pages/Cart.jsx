@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { Add, Remove } from '@mui/icons-material';
 import styled from "styled-components";
 import { Footer } from "../components/Footer";
 import { mobile } from "../responsive";
@@ -42,9 +42,9 @@ export const Cart = () => {
               </ProductDetail>
               <PriceDetail>
                 <ProductAmountContainer>
-                  <FaPlus />
+                  <Add />
                   <ProductAmount>{product.cantidad}</ProductAmount>
-                  <FaMinus/>
+                  <Remove/>
                 </ProductAmountContainer>
                 <ProductPrice>$ {product.price * product.cantidad}</ProductPrice>
               </PriceDetail>

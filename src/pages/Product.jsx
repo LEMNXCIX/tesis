@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaMinus, FaPlus } from "react-icons/fa";
+import { Add, Remove } from '@mui/icons-material';
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Footer } from "../components/Footer";
@@ -66,17 +66,17 @@ export const Product = () => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-              <FaMinus
+              <Remove
                 style={{ cursor: "pointer" }}
                 onClick={() => handleCantidad("menos")}
               />
               <Amount>{cantidad}</Amount>
-              <FaPlus
+              <Add
                 style={{ cursor: "pointer" }}
                 onClick={() => handleCantidad("mas")}
               />
             </AmountContainer>
-            <Button onClick={handleClick}>Aniadir al carrito</Button>
+            <Button onClick={handleClick}>Añadir al carrito</Button>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

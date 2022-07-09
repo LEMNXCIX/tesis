@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { MdArrowDownward, MdArrowUpward } from "react-icons/md";
+import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
 import styled from "styled-components";
 import { userRequest } from "../requestMetods";
 
@@ -33,9 +33,9 @@ export const FeautredInfo = () => {
             <div style={{"display":"flex"}}>
               {Math.floor(perc)}%
               {perc <0 ? (<Icon>
-              <MdArrowDownward color="red" />
+              <ArrowDownward color="red" />
             </Icon>):(<Icon>
-              <MdArrowUpward color="green" />
+              <ArrowUpward color="green" />
             </Icon>) }
             
             </div>
@@ -51,7 +51,7 @@ export const FeautredInfo = () => {
           <MoneyRate>
             +1.8 %
             <Icon>
-              <MdArrowUpward color="green" />
+              <ArrowUpward color="green" />
             </Icon>
           </MoneyRate>
         </MoneyContainer>
@@ -64,7 +64,7 @@ export const FeautredInfo = () => {
           <MoneyRate>
             +1.8 %
             <Icon>
-              <MdArrowUpward color="green" />
+              <ArrowUpward color="green" />
             </Icon>
           </MoneyRate>
         </MoneyContainer>
@@ -77,7 +77,7 @@ export const FeautredInfo = () => {
           <MoneyRate>
             +1.8 %
             <Icon>
-              <MdArrowUpward color="green" />
+              <ArrowUpward color="green" />
             </Icon>
           </MoneyRate>
         </MoneyContainer>

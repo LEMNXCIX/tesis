@@ -13,7 +13,7 @@ export const login = async (dispatch, user) => {
         }
       });
     // console.log(res.data.mensaje);
-    mensajeApiCall = "se ha iniciado sesion";
+    mensajeApiCall = "Se ha iniciado sesión";
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
@@ -21,7 +21,7 @@ export const login = async (dispatch, user) => {
 };
 
 export const logout = async (dispatch) => {
-  mensajeApiCall = "Se cerro sesion";
+  mensajeApiCall = "Se cerro sesión";
   // console.log("cerrar sesion");
   dispatch(logOut());
 };

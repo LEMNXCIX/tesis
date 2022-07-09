@@ -8,7 +8,7 @@ export const Products = () => {
     <>
       Products
       <div>Products</div>
-      <div>Categorias</div>
+      <div>Categorías</div>
       <div>Filtro</div>
       <div>Alls</div>
     </>

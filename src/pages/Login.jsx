@@ -85,13 +85,24 @@ const Input = styled.input`
 const Button = styled.button`
   padding: 10px;
   font-size: 16px;
-  background-color: transparent;
+  font-weight: 400;
+  //color: #000;
+  background-color: #ffc27c;
+  color: #7c4e0a;
+  //box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+  border: none;
   cursor: pointer;
   border-radius: 4px;
+  margin-bottom: 10px;
+  transition: 0.1s 0s ease-in-out;
   ${mobile({ width: "100%" })}
   &:disabled {
     color: red;
     cursor: not-allowed;
+  }
+  &:hover {
+    background-color: #fbb15c;
+    box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1);
   }
 `;
 

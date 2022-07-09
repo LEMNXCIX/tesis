@@ -1,5 +1,5 @@
 import React from "react";
-import { FaTimes } from "react-icons/fa";
+import { Close } from '@mui/icons-material';
 import styled from "styled-components";
 
 export const Modal = ({
@@ -31,7 +31,7 @@ export const Modal = ({
                 cambiarEstado(false);
               }}
             >
-              <FaTimes />
+              <Close />
             </Cerrar>
             {children}
           </ContenedorModal>

@@ -1,12 +1,12 @@
 import React from "react";
 import {
-    MdCalendarToday,
-  MdLocationSearching,
-  MdMailOutline,
-  MdPermIdentity,
-  MdPhoneAndroid,
-  MdPublish,
-  } from "react-icons/md";
+  Email,
+  CalendarMonth,
+  LocationOn,
+  Person,
+  PhoneAndroid,
+  Image,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -35,13 +35,13 @@ export const User = () => {
             <ShowTitle>Account Details</ShowTitle>
             <ShowInfo>
               <ShowIcon>
-                <MdPermIdentity />
+                <Person />
               </ShowIcon>
               <ShowInfoTitle>anabeck99</ShowInfoTitle>
             </ShowInfo>
             <ShowInfo>
               <ShowIcon>
-                <MdCalendarToday />
+                <CalendarMonth />
               </ShowIcon>
 
               <ShowInfoTitle className="userShowInfoTitle">
@@ -51,7 +51,7 @@ export const User = () => {
             <ShowTitle className="userShowTitle">Contact Details</ShowTitle>
             <ShowInfo className="userShowInfo">
               <ShowIcon>
-                <MdPhoneAndroid />
+                <PhoneAndroid />
               </ShowIcon>
               <ShowInfoTitle className="userShowInfoTitle">
                 +1 123 456 67
@@ -59,7 +59,7 @@ export const User = () => {
             </ShowInfo>
             <ShowInfo className="userShowInfo">
               <ShowIcon>
-                <MdMailOutline />
+                <Email />
               </ShowIcon>
               <ShowInfoTitle className="userShowInfoTitle">
                 annabeck99@gmail.com
@@ -67,7 +67,7 @@ export const User = () => {
             </ShowInfo>
             <ShowInfo className="userShowInfo">
               <ShowIcon>
-                <MdLocationSearching />
+                <LocationOn />
               </ShowIcon>
               <ShowInfoTitle className="userShowInfoTitle">
                 New York | USA
@@ -108,7 +108,7 @@ export const User = () => {
                 />
                 <label htmlFor="file">
                   <UpdateIcon>
-                    <MdPublish />
+                    <Image />
                   </UpdateIcon>{" "}
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
@@ -187,9 +187,16 @@ const ShowInfo = styled.div`
   color: #444;
 `;
 const ShowIcon = styled.i`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 16px;
 `;
 const ShowInfoTitle = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
   margin-left: 10px;
 `;
 const Update = styled.div`

@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  MdAttachMoney,
-  MdHome,
-  MdLeaderboard,
-  MdPermIdentity,
-  MdStorefront,
-  MdTimeline,
-  MdTrendingUp,
-} from "react-icons/md";
+  Home,
+  Insights,
+  Leaderboard,
+  Group,
+  Storefront,
+  AttachMoney,
+  Article,
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 export const Sidebar = () => {
@@ -21,20 +21,20 @@ export const Sidebar = () => {
             <Navlink to="/">
               <ListItem>
                 <Icon>
-                  <MdHome />
+                  <Home />
                 </Icon>
                 Home
               </ListItem>
             </Navlink>
             <ListItem>
               <Icon>
-                <MdTimeline />
+                <Insights />
               </Icon>
               Analityca
             </ListItem>
             <ListItem>
               <Icon>
-                <MdTrendingUp />
+                <Leaderboard />
               </Icon>
               Ventas
             </ListItem>
@@ -44,7 +44,7 @@ export const Sidebar = () => {
             <Navlink to="/usuarios">
               <ListItem>
                 <Icon>
-                  <MdPermIdentity />
+                  <Group />
                 </Icon>
                 Usuarios
               </ListItem>
@@ -52,20 +52,20 @@ export const Sidebar = () => {
             <Navlink to="/productos">
               <ListItem>
                 <Icon>
-                  <MdStorefront />
+                  <Storefront />
                 </Icon>
                 Productos
               </ListItem>
             </Navlink>
             <ListItem>
               <Icon>
-                <MdAttachMoney />
+                <AttachMoney />
               </Icon>
               Transaciones
             </ListItem>
             <ListItem>
               <Icon>
-                <MdLeaderboard />
+                <Article />
               </Icon>
               Reportes
             </ListItem>
@@ -78,27 +78,27 @@ export const Sidebar = () => {
 const Container = styled.div`
   flex: 1;
   height: calc(100% - 50px);
-  background-color: rgb(251, 251, 255);
+  background-color: rgb(255, 255, 255);
   position: sticky;
   top: 50px;
 `;
 const Wrapper = styled.div`
   padding: 20px;
-  color: #555;
+  color: #665351;
 `;
 const Menu = styled.div`
   margin-bottom: 10px;
 `;
 const Title = styled.h3`
   font-size: 13px;
-  color: rgb(187, 186, 186);
+  color: #5a3908;
 `;
 const List = styled.ul`
   padding: 5px;
 `;
 const Navlink = styled(Link)`
   text-decoration: none;
-  color: #555;
+  color: #665351;
 `;
 const ListItem = styled.li`
   padding: 5px;
@@ -106,8 +106,9 @@ const ListItem = styled.li`
   display: flex;
   align-items: center;
   border-radius: 5px;
+  transition: 0.5ms 0.9ms ease-in-out;
   &:hover {
-    background-color: rgb(240, 240, 255);
+    background-color: #c0aaa8;
   }
 `;
 const Icon = styled.div`

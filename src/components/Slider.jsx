@@ -1,5 +1,5 @@
 import React from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { ArrowForwardIos, ArrowBackIos } from '@mui/icons-material';
 import { useState } from "react/cjs/react.development";
 import styled from "styled-components";
 import Data from "../Json/Informacion.json";
@@ -18,7 +18,7 @@ export const Slider = () => {
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleClick("left")}>
-        <FaArrowLeft/>
+        <ArrowForwardIos/>
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {Data.sliderItems.map((item) => (
@@ -35,7 +35,7 @@ export const Slider = () => {
         ))}
       </Wrapper>
       <Arrow direction="right" onClick={() => handleClick("right")}>
-        <FaArrowRight />
+        <ArrowBackIos />
       </Arrow>
     </Container>
   );

@@ -46,11 +46,11 @@ export const Navbar = ({ user }) => {
           </Enlace>
           {!user && (
             <MenuItems onClick={() => cambiarEstadoModal(!estadoModal)}>
-              <TipoBoton>Iniciar Sesion</TipoBoton>
+              <TipoBoton>Iniciar Sesión</TipoBoton>
             </MenuItems>
           )}
           {user && (
-            <MenuItems onClick={() => funcionCerrar()}>Cerrar Sesion</MenuItems>
+            <MenuItems onClick={() => funcionCerrar()}>Cerrar Sesión</MenuItems>
           )}
           <Modal
             estado={estadoModal}
@@ -136,7 +136,10 @@ const MenuItems = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 const Badge = styled.span`
-  background: #d0d94c;
+//color: #e4c19d;
+  //background: #6d5233;
+  color: #6d5233;
+  background-color: #e4c19d ;
   position: relative;
   height: 10px;
   width: 10px;

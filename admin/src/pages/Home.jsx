@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { Chart } from "../components/Chart";
 import { FeautredInfo } from "../components/FeautredInfo";
+import { ProductsChart } from "../components/ProductsChart";
 import { WidgetLg } from "../components/WidgetLg";
 import { WidgetSm } from "../components/WidgetSm";
 import { userRequest } from "../requestMetods";
@@ -46,22 +47,24 @@ export const Home = () => {
 
   return (
     <Container>
+      
       <FeautredInfo />
       <Chart
         data={userStats}
-        title="Analitica de clientes"
+        title="Clientes nuevos por mes"
         grid
         dataKey="Usuarios nuevos"
       />
-      <Widgets>
+           <Widgets>
         <WidgetSm />
         <WidgetLg />
       </Widgets>
+        
     </Container>
   );
 };
 const Container = styled.div`
-  flex: 4;
+  flex: 7;
 `;
 const Widgets = styled.div`
   display: flex;

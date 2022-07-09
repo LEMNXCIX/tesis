@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useCallback } from "react";
-import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import { ArrowForwardIos, ArrowBackIos } from '@mui/icons-material';
 import styled from "styled-components";
 
 const Slideshow = ({
@@ -97,10 +97,10 @@ const Slideshow = ({
       {controles && (
         <Controles>
           <Boton onClick={anterior}>
-            <MdChevronLeft />
+            <ArrowForwardIos />
           </Boton>
           <Boton derecho onClick={siguiente}>
-            <MdChevronRight />
+            <ArrowBackIos />
           </Boton>
         </Controles>
       )}

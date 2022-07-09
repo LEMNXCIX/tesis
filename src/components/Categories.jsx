@@ -7,8 +7,9 @@ import {mobile} from "../responsive"
 export const Categories = () => {
   return (
     <>
-      <Title>Categorias</Title>
+     
       <Container>
+      <Title>Categorías</Title>
         {Data.categorias.map((item) => (
           <CategoryItem item={item} key={item.id} />
         ))}
@@ -18,7 +19,7 @@ export const Categories = () => {
 };
 const Container = styled.div`
   display: flex;
-  padding: 5px 20px;
+  padding: 5px 50px;
   justify-content: space-between;
   ${mobile({padding: "0px", flexDirection:"column"})}
 `;

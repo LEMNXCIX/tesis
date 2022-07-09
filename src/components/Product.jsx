@@ -1,5 +1,5 @@
 import React from "react";
-import { FaEye, FaHeart, FaShoppingCart } from "react-icons/fa";
+import { Visibility, ShoppingCart, Heart } from '@mui/icons-material';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -10,17 +10,17 @@ export const Product = ({ item }) => {
       <Image src={item.img} />
       <Info>
         <Icon>
-          <FaShoppingCart />
+          <ShoppingCart />
         </Icon>
         <Icon>
           <Link to={`/producto/${item._id}`}>
             {" "}
-            <FaEye />
+            <Visibility />
           </Link>
         </Icon>
-        <Icon>
-          <FaHeart />
-        </Icon>
+        {/* <Icon>
+          <Heart />
+        </Icon> */}
       </Info>
     </Container>
   );

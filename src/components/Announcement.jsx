@@ -10,7 +10,7 @@ export const Announcement = () => {
       {estado && (
         <Container>
           <Text>
-            Oferta!! Obten el 10% de descuento por compras superiores a $50 {mensajeApiCall}
+            Oferta!! Obtén el 10% de descuento por compras superiores a $50 {mensajeApiCall}
           </Text>
           <Cerrar onClick={() => cambiarEstado(false)}>
             <Close  fontSize="inherit"/>
@@ -22,7 +22,8 @@ export const Announcement = () => {
 };
 const Container = styled.div`
   position: relative;
-  background-color: #e2cebd;
+  background-color: #ffc27c;
+  color: #7c4e0a;
   align-items: center;
   display: flex;
   justify-content: center;

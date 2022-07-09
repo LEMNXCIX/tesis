@@ -2,13 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link as Enlace } from "react-router-dom";
 import { mobile } from "../responsive";
-import {
-  FaEnvelope,
-  FaFacebook,
-  FaInstagram,
-  FaMapMarkerAlt,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { Email, LocationOn, Facebook, Instagram, WhatsApp  } from '@mui/icons-material';
 
 export const Footer = () => {
   return (
@@ -23,10 +17,10 @@ export const Footer = () => {
         </Description>
         <SocialContainer>
           <SocialIcon color="4267B2">
-            <FaFacebook />
+            <Facebook />
           </SocialIcon>
           <SocialIcon color="E1306C">
-            <FaInstagram />
+            <Instagram />
           </SocialIcon>
         </SocialContainer>
       </Left>
@@ -37,7 +31,7 @@ export const Footer = () => {
             <Link to={"/"}>Inicio</Link>
           </ListItem>
           <ListItem>
-            <Link to={"/categorias"}>Categorias</Link>
+            <Link to={"/categorias"}>Categorías</Link>
           </ListItem>
           <ListItem>
             <Link to={"/productos"}>Productos</Link>
@@ -46,7 +40,7 @@ export const Footer = () => {
             <Link to={"/cart"}>Carrito</Link>
           </ListItem>
           <ListItem>
-            <Link to={"/terminos"}>Terminos y condiciones</Link>
+            <Link to={"/terminos"}>Términos y condiciones</Link>
           </ListItem>
           <ListItem>
             <Link to={"/acerca"}>Acerca de nosotros</Link>
@@ -58,19 +52,19 @@ export const Footer = () => {
         <Title>Contacto</Title>
         <ContactItem>
           <SocialIcon color="000000">
-            <FaMapMarkerAlt />
+            <LocationOn />
           </SocialIcon>
           Santo Domingo, por ahi
         </ContactItem>
         <ContactItem>
           <SocialIcon color="000000">
-            <FaWhatsapp />
+            <WhatsApp />
           </SocialIcon>
           +593 98 7654 321
         </ContactItem>
         <ContactItem>
           <SocialIcon color="000000">
-            <FaEnvelope />
+            <Email />
           </SocialIcon>
           contacto@micorreo.com
         </ContactItem>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { MdDelete } from "react-icons/md";
+import { Delete, Edit } from '@mui/icons-material';
 import { userRows } from "../dummyData";
 
 export const UserList = () => {
@@ -46,9 +46,9 @@ export const UserList = () => {
         return (
           <>
             <Link to={"/user/" + params.row.id}>
-              <ListEdit>Edit</ListEdit>
+              <ListEdit><Edit/></ListEdit>
             </Link>
-            <Delete onClick={() => handleDelete(params.row.id)} />
+            <DeleteI onClick={() => handleDelete(params.row.id)} />
           </>
         );
       },
@@ -95,7 +95,7 @@ const ListEdit = styled.button`
   font-size: 16px;
 `;
 
-const Delete = styled(MdDelete)`
+const DeleteI = styled(Delete)`
   background-color: #fff0f1;
   color: #d95087;
   cursor: pointer;

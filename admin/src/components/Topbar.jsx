@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { FaBell, FaCog, FaGlobe } from "react-icons/fa";
 import { MdBell,MdLogout,MdSettings } from "react-icons/md";
+import { Logout } from '@mui/icons-material';
 import { useDispatch } from "react-redux";
 import { logOut } from "../redux/userRedux";
 import { useSelector } from "react-redux";
@@ -33,7 +34,7 @@ export const Topbar = () => {
           />
           {user && (
             <MenuItems onClick={() => dispatch(logOut())}>
-              <MdLogout />
+              <Logout />
             </MenuItems>
           )}
         </Rigth>
@@ -65,7 +66,7 @@ const Rigth = styled.div`
 const Logo = styled.span`
   font-weight: bold;
   font-size: 30px;
-  color: darkblue;
+  color: #fbb15c;
   cursor: pointer;
 `;
 const IconContainer = styled.div`
@@ -74,6 +75,8 @@ const IconContainer = styled.div`
   margin-right: 20px;
   //color: #555;
   font-size: 20px;
+  color: #665351;
+
 `;
 const IconBadge = styled.span`
   width: 18px;
@@ -104,4 +107,6 @@ const MenuItems = styled.div`
   margin-left: 10px;
   font-size: 20px;
   font-weight: 600;
+  color: #665351;
+
 `;

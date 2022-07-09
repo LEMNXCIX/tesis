@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { MdVisibility } from "react-icons/md";
+import { Visibility } from '@mui/icons-material';
 import styled from "styled-components";
 import { userRequest } from "../requestMetods";
 
@@ -33,7 +33,7 @@ export const WidgetSm = () => {
             </User>
             <Button>
               <Icon>
-                <MdVisibility />
+                <Visibility />
               </Icon>
               Ver
             </Button>

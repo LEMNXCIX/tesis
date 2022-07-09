@@ -5,9 +5,9 @@ import { mobile } from "../responsive";
 export const Newsletter = () => {
   return (
     <Container>
-      <Title>Boletin informativo</Title>
+      <Title>Boletín informativo</Title>
       <Description>
-        Obten noticias de proximos productos que estaran disponibles
+        Obtén noticias de próximos productos que estarán disponibles
       </Description>
       <InputContainer>
         <Input placeholder="ejemplo@correo.com" />
