@@ -27,7 +27,7 @@ const getProfile = (accesToken, refreshToken, profile, done) => {
 const useGoogleStrategy = () => {
   return new GoogleStrategy(
     {
-      clientID: oauthClientID,
+      clientId: oauthClientID,
       clientSecret: oauthClientSecret,
       callbackURL: callbackUrl("google"),
     },
@@ -37,7 +37,7 @@ const useGoogleStrategy = () => {
 const useFacebookStrategy = () => {
   return new FacebookStrategy(
     {
-      clientID: facebookAppID,
+      clientId: facebookAppID,
       clientSecret: facebookAppSecret,
       callbackURL: callbackUrl("facebook"),
       profileFields: ["id", "emails", "displayName", "name", "photos"],
@@ -61,7 +61,7 @@ const useTwitterStrategy = () => {
 const useGitHubStrategy = () => {
   return new GitHubStrategy(
     {
-      clientID: githubClientID,
+      clientId: githubClientID,
       clientSecret: githubClientSecret,
       callbackURL: callbackUrl("github"),
       scope: ["user:email"],
