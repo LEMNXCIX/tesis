@@ -1,12 +1,35 @@
 {
     "version": "0.2.0",
     "configurations": [
+      
+      {
+        "console": "integratedTerminal",
+        "internalConsoleOptions": "neverOpen",
+        "name": "nodemon",
+        "program": "${workspaceFolder}/api/app.js",
+        "request": "launch",
+        "restart": true,
+        "runtimeExecutable": "nodemon",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "type": "node"
+      },
+      {
+        "name": "Attach",
+        "port": 4000,
+        "request": "attach",
+        "skipFiles": [
+          "<node_internals>/**"
+        ],
+        "type": "node"
+      },
       {
         "type": "pwa-msedge",
         "request": "launch",
         "name": "Launch Edge against localhost",
         "url": "http://localhost:3000",
-        "webRoot": "${workspaceFolder}"
+        "webRoot": "${workspaceFolder}//api"
       }
     ]
   }

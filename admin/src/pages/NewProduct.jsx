@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import {
@@ -8,15 +8,24 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import app from "../firebase";
-import { addProduct } from "../redux/apiCalls";
+import { addProduct, mensajeApiCall } from "../redux/apiCalls";
 import { useDispatch } from "react-redux";
+import Errors from "../elements/Errors";
 
 export const NewProduct = () => {
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState("");
   const [cat, setCat] = useState([]);
+  const [errors,setErrors] = useState({
+    isErrors:false,
+    errors:[]
+})
   const dispatch = useDispatch();
 
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleChange = (e) => {
     setInputs((prev) => {
       return { ...prev, [e.target.name]: e.target.value };
@@ -27,7 +36,7 @@ export const NewProduct = () => {
   };
   const handleClick = (e) => {
     e.preventDefault();
-    const fileName = file.name;
+    const fileName = file.name ;
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
     const uploadTask = uploadBytesResumable(storageRef, file);
@@ -36,7 +45,7 @@ export const NewProduct = () => {
     // 1. 'state_changed' observer, called any time the state changes
     // 2. Error observer, called on failure
     // 3. Completion observer, called on successful completion
-    uploadTask.on(
+   uploadTask.on(
       "state_changed",
       (snapshot) => {
         // Observe state change events such as progress, pause, and resume
@@ -55,6 +64,7 @@ export const NewProduct = () => {
         }
       },
       (error) => {
+        console.log(error);
         // Handle unsuccessful uploads
       },
       () => {
@@ -62,21 +72,25 @@ export const NewProduct = () => {
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
           console.log("File available at", downloadURL);
-          const product = { ...inputs, img: downloadURL, categories: cat };
+          const product = { ...inputs, image: [downloadURL], categories: cat };
           addProduct(product, dispatch);
-          window.location.replace("/productos");
+
+          mensajeApiCall &&  setErrors({
+            isErrors:true,
+            errors:mensajeApiCall.message
+        })
+          // window.location.replace("/productos");
         });
       }
-    );
-      
+    )
   };
 
   return (
     <Container>
-      <Title>New Product</Title>
+      <Title>Ingresar nuevo producto</Title>
       <Form>
         <Item>
-          <label>Image</label>
+          <label>Imagen</label>
           <input
             name="file"
             type="file"
@@ -85,64 +99,59 @@ export const NewProduct = () => {
           />
         </Item>
         <Item>
-          <label>Title</label>
+          <label>Nombre</label>
           <input
-            name="title"
+            name="name"
             type="text"
-            placeholder="Apple Airpods"
+            placeholder="Nombre del producto"
             onChange={handleChange}
           />
         </Item>
         <Item>
-          <label>Description</label>
+          <label>Descripción</label>
           <input
             name="description"
             type="text"
-            placeholder="Desc"
+            placeholder="Agrega una breve descripción del producto"
             onChange={handleChange}
           />
         </Item>
         <Item>
-          <label>Categories</label>
+          <label>Categoría</label>
           <input
             name="cat"
             type="text"
-            placeholder="Cat"
+            placeholder="Ingresa una categoría"
             onChange={handleCat}
           />
         </Item>
         <Item>
-          <label>Price</label>
+          <label>Precio</label>
           <input
             name="price"
             type="number"
-            placeholder="#"
+            placeholder="Ingresa el precio"
             onChange={handleChange}
           />
         </Item>
         <Item>
           <label>Cantidad</label>
           <input
-            name="cantidad"
+            name="stock"
             type="number"
-            placeholder="#"
+            placeholder="Cantidad disponible"
             onChange={handleChange}
           />
         </Item>
-        <Item>
-          <label>Stock</label>
-          <select name="inStock" onChange={handleChange}>
-            <option value={"true"}>Yes</option>
-            <option value={"false"}>No</option>
-          </select>
-        </Item>
         <Button onClick={handleClick}>Crear</Button>
       </Form>
+      <Errors errors={errors}/>
     </Container>
   );
 };
 const Container = styled.div`
-  flex: 4;
+    flex: 7;
+  padding: 20px;
 `;
 const Title = styled.h1``;
 const Form = styled.form`

@@ -22,23 +22,8 @@ function auth(app) {
 
   //Ruta para iniciar sesion
   router.post("/login", async (req, res) => {
-    const result = await authServ.login(req.body);
-    return authResponse(res, result, 401);
-    // if (result.success) {
-    //   const token = result.token;
-
-    //   //* Crea la cookie con los parametros que se han definido
-    //   return res
-    //     .cookie("token", token, {
-    //       httpOnly: true,
-    //       secure: false, //! Solo disponible a través de https*
-    //       sameSite: "none",
-    //       expires: new Date(new Date().setDate(new Date().getDate() + 7)),
-    //     })
-    //     .status(201)
-    //     .json(result);
-    // }
-    // return res.status(401).json(result);
+    const result = await authServ.login(req.body)
+    return authResponse(res,result,401)
   });
 
   //Ruta para registro

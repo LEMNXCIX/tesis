@@ -5,28 +5,44 @@ const uuid = require("uuid");
 
 class User {
   /**
-   * Obtener los datos de un usuario segun su email
+   * Obtener los datos de un usuario según su email
    * @param {email} email Email del usuario desde el body
    * @returns Objeto usuario \ error
    *
    */
-   async getAll() {
+  async getAll() {
     try {
       const users = await UserModel.find();
       //en esta parte obtenemos todos los datos
       return users; //array
     } catch (error) {
-      console.log(error);
+      return {
+        error: true,
+        error,
+      };
     }
   }
   async getByEmail(email) {
     try {
       const user = await UserModel.findOne({ email });
-
       return user;
     } catch (error) {
       console.log(error);
-      return error;
+      return {
+        error: true,
+        message,
+      };
+    }
+  }
+  async getById(id) {
+    try {
+      const user = await UserModel.findById(id);
+      return user;
+    } catch (er) {
+      return {
+        error: true,
+        er,
+      };
     }
   }
 
@@ -66,15 +82,6 @@ class User {
             },
             { new: true }
           );
-
-          // {"$set":{
-          // "userObjects":{
-          //     "$mergeObjects":[
-          //     "$userObjects",
-          //     {"newerItem":"newervalue","newestItem":"newestvalue"}
-          //     ]
-          // }
-          // }}
           return {
             created: true,
             user,

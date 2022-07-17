@@ -38,6 +38,11 @@ export const Product = () => {
     ],
     []
   );
+  
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   useEffect(() => {
     const getStats = async () => {
       // file ? console.log(file) :console.log("no existe el file")
@@ -136,7 +141,7 @@ export const Product = () => {
     <Container>
       <TitleContainer>
         <h1 className="productTitle">Product</h1>
-        <Link to="/nuevoProducto">
+        <Link to="/producto/nuevo">
           <AddButton>Crear</AddButton>
         </Link>
       </TitleContainer>
@@ -183,7 +188,7 @@ export const Product = () => {
               placeholder={product.title}
               onChange={handleChange}
             />{" "}
-            <label>Descripcion</label>
+            <label>Descripción</label>
             <input
               name="description"
               type="text"
@@ -230,7 +235,7 @@ export const Product = () => {
   );
 };
 const Container = styled.div`
-  flex: 4;
+    flex: 7;
   padding: 20px;
 `;
 const TitleContainer = styled.div`

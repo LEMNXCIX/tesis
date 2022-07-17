@@ -14,7 +14,7 @@ function products(app) {
 
   router.get("/", async (req, res) => {
     const result = await productsServ.getAll();
-    return res.json(result);
+    return res.status(result.error ? 400 : 200).json(result);
   });
 
   router.post("/", authMiddleware(1), async (req, res) => {
@@ -22,7 +22,8 @@ function products(app) {
       ...req.body,
       owner: req.user.id,
     });
-    return res.json(result);
+    console.log(result)
+    return res.status(result.error ? 400 : 200).json(result);
   });
   router.get("/:id", async (req, res) => {
     const id = req.params.id;
@@ -35,15 +36,14 @@ function products(app) {
 
     const result = await productsServ.getAllByUser(limit, page, id);
 
-    return res.json(result);
+    return res.status(result.error ? 400 : 200).json(result);
   });
 
   router.get("/one/:id", async (req, res) => {
     const id = req.params.id;
 
     const result = await productsServ.getOne(id);
-
-    return res.json(result);
+    return res.status(result.error ? 400 : 200).json(result);
   });
 
   router.delete("/:id", authMiddleware(1), async (req, res) => {

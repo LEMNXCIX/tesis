@@ -5,8 +5,27 @@ const User = require("./users.services");
 
 class Auth {
   async login(data) {
+    const re = /^[\w\.-]+@[\w]+\.[\.\w]+$/
+    console.log(data)
     const { email, password } = data;
-
+    if (password == "") {
+      return {
+        success: false,
+        errors: ["Ingrese la contraseña"],
+      };
+    }
+    if(!re.test(email)){
+      return {
+        success: false,
+        errors: ["Ingrese un correo electrónico valido"],
+      };
+    }
+    if (email == "") {
+      return {
+        success: false,
+        errors: ["Ingrese el correo electrónico"],
+      };
+    }
     const userServ = new User();
     const user = await userServ.getByEmail(email);
 

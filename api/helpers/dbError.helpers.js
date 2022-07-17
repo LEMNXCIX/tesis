@@ -11,14 +11,16 @@ function dbError(error) {
   if (error.code === 11000) {
     return {
       created: false,
-      errors: duplicatedError(error.keyValue),
+      error: true,
+      message: duplicatedError(error.keyValue),
     };
   }
 
   // Error en la validacion de datos
   return {
     created: false,
-    errors: validationError(error.errors),
+    error: true,
+    message: validationError(error.errors),
   };
 }
 

@@ -17,6 +17,7 @@ import { ProductList } from "./pages/ProductList";
 import { User } from "./pages/User";
 import Login from "./pages/Login.jsx";
 import { useSelector } from "react-redux";
+import { EditProduct } from "./pages/EditProduct";
 // import { useEffect } from "react";
 
 // function Redirect({ to }) {
@@ -31,8 +32,7 @@ function App() {
   const usuario = useSelector((state) => state.user);
 
   // console.log(admin)
-  usuario.currentUser === null ? console.log("vacio") : console.log("no vacio");
-  return (
+return (
     <Router>
       {usuario.currentUser === null ? (
         <>
@@ -46,12 +46,13 @@ function App() {
             <Sidebar />
             <Routes>
               <Route exact path="/" element={<Home />} />
-              <Route exact path="/usuarios" element={<UserList />} />
-              <Route path="/user" element={<User />} />
-              <Route exact path="/nuevoUsuario" element={<NewUser />} />
+              <Route exact path="/clientes" element={<UserList />} />
+              <Route path="/cliente/:id" element={<User />} />
+              <Route exact path="/cliente/nuevo" element={<NewUser />} />
               <Route exact path="/productos" element={<ProductList />} />
               <Route path="/producto/:productId" element={<Product />} />
-              <Route exact path="/nuevoProducto" element={<NewProduct />} />
+              <Route path="/producto/edit/:productId" element={<EditProduct />} />
+              <Route exact path="/producto/nuevo" element={<NewProduct />} />
             </Routes>
           </Container>
         </>

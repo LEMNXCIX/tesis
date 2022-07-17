@@ -97,10 +97,10 @@ const Slideshow = ({
       {controles && (
         <Controles>
           <Boton onClick={anterior}>
-            <ArrowForwardIos />
+            <ArrowBackIos />
           </Boton>
           <Boton derecho onClick={siguiente}>
-            <ArrowBackIos />
+            <ArrowForwardIos />
           </Boton>
         </Controles>
       )}

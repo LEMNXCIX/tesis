@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 export const NewUser = () => {
+  
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Container>
       <Title>Nuevo Usuario</Title>
@@ -54,7 +59,8 @@ export const NewUser = () => {
   );
 };
 const Container = styled.div`
-  flex: 4;
+      flex: 7;
+  padding: 20px;
 `;
 const Title = styled.h1``;
 const Form = styled.form`

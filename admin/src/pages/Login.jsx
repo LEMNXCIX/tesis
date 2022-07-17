@@ -1,20 +1,24 @@
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login, mensajeApiCall } from "../redux/apiCalls";
-
+console.log(mensajeApiCall.errors)
 const Login = () => {
 
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
-  console.log(useSelector((state) => state.user));
+
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleClick = (e) => {
     e.preventDefault();
-    login(dispatch, { username, password });
+    login(dispatch, { email, password });
   };
-
+  console.log(mensajeApiCall.errors)
   return (
     <div
       style={{
@@ -29,7 +33,7 @@ const Login = () => {
         style={{ padding: 10, marginBottom: 20 }}
         type="text"
         placeholder="Nombre de usuario"
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <input
         style={{ padding: 10, marginBottom: 20 }}
@@ -40,7 +44,8 @@ const Login = () => {
       <button onClick={handleClick} style={{ padding: 10, width:100 }}>
         Login
       </button>
-      {error &&  <Error>{mensajeApiCall}</Error>
+      {error &&  <Error>{mensajeApiCall.errors}</Error>
+
       }
     
     </div>

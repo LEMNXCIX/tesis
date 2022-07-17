@@ -16,14 +16,14 @@ function cart(app) {
   //Obtener los productos del carrito
   router.get("/", authMiddleware(1), async (req, res) => {
     const result = await cartServ.getItems(req.user.id);
-    return res.json(result);
+    return res.status(result.error ? 400 : 200).json(result);
   });
 
   //Anadir productos al carrito
   router.post("/add", authMiddleware(1), async (req, res) => {
     const { idProduct, amount } = req.body;
     const result = await cartServ.addToCart(req.user.id, idProduct, amount);
-    return res.json(result);
+    return res.status(result.error ? 400 : 200).json(result);
   });
 }
 module.exports = cart;

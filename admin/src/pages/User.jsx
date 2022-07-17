@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Email,
   CalendarMonth,
@@ -7,16 +7,37 @@ import {
   PhoneAndroid,
   Image,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { publicRequest, userRequest } from "../requestMetods";
 
 export const User = () => {
+  const location = useLocation();
+  const userId = location.pathname.split("/")[2];
+  const [user, setUser] = useState([]);
+
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useEffect(() => {
+
+    const getUsers = async () => {
+      try {
+        const res = await userRequest.get("users/find/"+userId);
+        console.log(res.data)
+        setUser(res.data);
+        console.log(user)
+      } catch (error) {}
+    };
+    getUsers();
+  }, []);
   return (
     <Container>
       <TitleContainer>
-        <Title>Editar usuario</Title>
-        <Link to="/nuevoUsuario">
-          <AddButton>Crear</AddButton>
+        <Title>Información del usuario</Title>
+        <Link style={{ textDecoration: "none" }} to="/cliente/nuevo">
+          <AddButton>Cambiar estado</AddButton>
         </Link>
       </TitleContainer>
       <UserContainer>
@@ -27,17 +48,17 @@ export const User = () => {
               alt=""
             />
             <ShowTopTitle>
-              <ShowUsername>Anna Becker</ShowUsername>
-              <ShowUserTitle>Ingeniera</ShowUserTitle>
+              <ShowUsername>{user.name}</ShowUsername>
+              <ShowUserTitle></ShowUserTitle>
             </ShowTopTitle>
           </ShowTop>
           <ShowBotton>
-            <ShowTitle>Account Details</ShowTitle>
+            <ShowTitle>Detalles del usuario</ShowTitle>
             <ShowInfo>
               <ShowIcon>
                 <Person />
               </ShowIcon>
-              <ShowInfoTitle>anabeck99</ShowInfoTitle>
+              <ShowInfoTitle>{user.username?user.username:"Nombre de usuario no identificado"}</ShowInfoTitle>
             </ShowInfo>
             <ShowInfo>
               <ShowIcon>
@@ -45,16 +66,16 @@ export const User = () => {
               </ShowIcon>
 
               <ShowInfoTitle className="userShowInfoTitle">
-                10.12.1999
+                {user.birthday?user.birthday:"El usuario no ha especificado una fecha de cumpleaños"}
               </ShowInfoTitle>
             </ShowInfo>
-            <ShowTitle className="userShowTitle">Contact Details</ShowTitle>
+            <ShowTitle className="userShowTitle">Detalles de contacto</ShowTitle>
             <ShowInfo className="userShowInfo">
               <ShowIcon>
                 <PhoneAndroid />
               </ShowIcon>
               <ShowInfoTitle className="userShowInfoTitle">
-                +1 123 456 67
+                {user.phone?user.phone:"El usuario no ha especificado una numero de contacto"}
               </ShowInfoTitle>
             </ShowInfo>
             <ShowInfo className="userShowInfo">
@@ -62,7 +83,7 @@ export const User = () => {
                 <Email />
               </ShowIcon>
               <ShowInfoTitle className="userShowInfoTitle">
-                annabeck99@gmail.com
+                {user.email?user.email:"No email"}
               </ShowInfoTitle>
             </ShowInfo>
             <ShowInfo className="userShowInfo">
@@ -75,28 +96,29 @@ export const User = () => {
             </ShowInfo>
           </ShowBotton>
         </Show>
+        {/* //TODO: Lista de productos en el carrito */}
         <Update>
-          <UpdateTitle>Editae</UpdateTitle>
+          <UpdateTitle>Editar</UpdateTitle>
           <UpdateForm>
             <UpdateLeft>
               <UpdateItem>
-                <lable>Nombre de usuario</lable>
+                <label>Nombre de usuario</label>
                 <UpdateInput type="text" placeholder="anabeck99" />
               </UpdateItem>
               <UpdateItem>
-                <lable>Nombre completo</lable>
+                <label>Nombre completo</label>
                 <UpdateInput type="text" placeholder="Anna Becker" />
               </UpdateItem>
               <UpdateItem>
-                <lable>Email</lable>
+                <label>Email</label>
                 <UpdateInput type="text" placeholder="anabeck99@gmail.com" />
               </UpdateItem>
               <UpdateItem>
-                <lable>Telefono</lable>
+                <label>Teléfono</label>
                 <UpdateInput type="text" placeholder="+1 123 456 789" />
               </UpdateItem>
               <UpdateItem>
-                <lable>Direccion</lable>
+                <label>Dirección</label>
                 <UpdateInput type="text" placeholder="New York | USA" />
               </UpdateItem>
             </UpdateLeft>
@@ -122,7 +144,7 @@ export const User = () => {
   );
 };
 const Container = styled.div`
-  flex: 4;
+     flex: 7;
   padding: 20px;
 `;
 const TitleContainer = styled.div`
@@ -132,14 +154,23 @@ const TitleContainer = styled.div`
 `;
 const Title = styled.h1``;
 const AddButton = styled.button`
-  width: 80px;
   border: none;
-  padding: 5px;
-  background-color: teal;
+  padding: 5px 15px 5px 5px;
+  background-color: #c0dbb9;
+  color: #465d40;
   border-radius: 5px;
-  cursor: pointer;
-  color: white;
   font-size: 16px;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  Add {
+    color: #465d40;
+  }
+  &:hover {
+    background-color: #a7db9b;
+  }
 `;
 const UserContainer = styled.div`
   display: flex;

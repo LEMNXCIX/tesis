@@ -8,7 +8,8 @@ export const WidgetSm = () => {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const res = await userRequest.get("user/?new=true");
+        const res = await userRequest.get("users");
+        console.log(res.data)
         setUsers(res.data);
       } catch (err) {}
     };

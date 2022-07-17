@@ -14,11 +14,14 @@ function users(app) {
   //
   router.get("/", authValidation(2), async (req, res) => {
    const users = await userServ.getAll()
-    return res.json({
-      success: true,
-      users
-    });
+   //return users
+   console.log(users)
+   return res.status(users.error ? 400 : 200).json(users);
   });
+  router.get("/find/:id", authValidation(2), async (req, res) => {
+    const users = await userServ.getById(req.params.id)
+    return res.status(users.error ? 400 : 200).json(users);
+   });
 }
 
 module.exports = users;

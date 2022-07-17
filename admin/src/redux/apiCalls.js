@@ -21,13 +21,17 @@ export const login = async (dispatch, user) => {
   try {
     const res = await publicRequest
       .post("/auth/login", user)
-      .catch(function (error) {
+      .catch(function(error) {
         if (error.response) {
-          console.log(error.response.data);
           mensajeApiCall = error.response.data;
         }
       });
-    dispatch(loginSuccess(res.data));
+    console.log(res.data.user.role);
+    res.data.user.role > 1
+      ? dispatch(loginSuccess(res.data))
+      : (mensajeApiCall = {
+          errors: ["No posees el permiso para acceder a este sitio"],
+        });
   } catch (err) {
     dispatch(loginFailure());
   }
@@ -73,7 +77,7 @@ export const updateProduct = async (id, product, dispatch) => {
   dispatch(updateProductStart());
   try {
     // update
-    const res = await userRequest.put(`/product/${id}`, product)
+    const res = await userRequest.put(`/product/${id}`, product);
     dispatch(updateProductSucces(res.data));
   } catch (err) {
     dispatch(updateProductFailure());
@@ -84,7 +88,13 @@ export const updateProduct = async (id, product, dispatch) => {
 export const addProduct = async (product, dispatch) => {
   dispatch(addProductStart());
   try {
-    const res = await userRequest.post(`/product`, product);
+    const res = await userRequest
+      .post(`/products`, product)
+      .catch(function(error) {
+        if (error.response) {
+          mensajeApiCall = error.response.data;
+        }
+      });
     dispatch(addProductSucces(res.data));
   } catch (err) {
     dispatch(addProductFailure());

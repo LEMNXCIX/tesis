@@ -17,7 +17,7 @@ export const Slider = () => {
   return (
     <Container>
       <Arrow direction="left" onClick={() => handleClick("left")}>
-        <ArrowForwardIos />
+        <ArrowBackIos />
       </Arrow>
       <Wrapper slideIndex={slideIndex}>
         {Data.sliderItems.map((item) => (

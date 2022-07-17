@@ -30,18 +30,18 @@ export const Sidebar = () => {
               <Icon>
                 <Insights />
               </Icon>
-              Analityca
+              Analítica
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
               <Icon>
                 <Leaderboard />
               </Icon>
               Ventas
-            </ListItem>
+            </ListItem> */}
           </List>
-          <Title>Menu Rapido</Title>
+          <Title>Menu Rápido</Title>
           <List>
-            <Navlink to="/usuarios">
+            <Navlink to="/clientes">
               <ListItem>
                 <Icon>
                   <Group />
@@ -57,12 +57,12 @@ export const Sidebar = () => {
                 Productos
               </ListItem>
             </Navlink>
-            <ListItem>
+            {/* <ListItem>
               <Icon>
                 <AttachMoney />
               </Icon>
               Transaciones
-            </ListItem>
+            </ListItem> */}
             <ListItem>
               <Icon>
                 <Article />

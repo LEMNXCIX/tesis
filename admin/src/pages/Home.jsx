@@ -7,6 +7,11 @@ import { WidgetLg } from "../components/WidgetLg";
 import { WidgetSm } from "../components/WidgetSm";
 import { userRequest } from "../requestMetods";
 export const Home = () => {
+  
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [userStats, setUserStats] = useState([]);
   const MONTHS = useMemo(
     () => [
@@ -32,7 +37,7 @@ export const Home = () => {
         const list = res.data.sort((a, b) => {
           return a._id - b.i_id;
         });
-        list.map((item) => 
+        list.map((item) =>
           setUserStats((prev) => [
             ...prev,
             { name: MONTHS[item._id - 1], "Usuarios nuevos": item.total },
@@ -43,11 +48,10 @@ export const Home = () => {
     getStats();
   }, [MONTHS]);
 
-// console.log(userStats)
+  // console.log(userStats)
 
   return (
     <Container>
-      
       <FeautredInfo />
       <Chart
         data={userStats}
@@ -55,16 +59,16 @@ export const Home = () => {
         grid
         dataKey="Usuarios nuevos"
       />
-           <Widgets>
+      <Widgets>
         <WidgetSm />
         <WidgetLg />
       </Widgets>
-        
     </Container>
   );
 };
 const Container = styled.div`
   flex: 7;
+  padding: 20px;
 `;
 const Widgets = styled.div`
   display: flex;

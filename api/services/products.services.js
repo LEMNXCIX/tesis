@@ -1,4 +1,5 @@
 const ProductsModel = require("../models/products.models");
+const dbError = require("../helpers/dbError.helpers");
 
 class Products {
   /**
@@ -6,8 +7,15 @@ class Products {
    * @returns Objeto con todos los productos
    */
   async getAll() {
-    const products = await ProductsModel.find();
-    return products;
+    try {
+      const products = await ProductsModel.find();
+      return products;
+    } catch (error) {
+      return {
+        error: true,
+        message,
+      };
+    }
   }
 
   /**
@@ -16,8 +24,12 @@ class Products {
    * @returns Objeto con el producto creado
    */
   async create(data) {
-    const products = await ProductsModel.create(data);
-    return products;
+    try {
+      const products = await ProductsModel.create(data);
+      return products;
+    } catch (error) {
+     return dbError(error);
+    }
   }
 }
 module.exports = Products;

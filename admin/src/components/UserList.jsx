@@ -1,52 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Delete, Edit } from '@mui/icons-material';
-import { userRows } from "../dummyData";
+import { Delete, Edit, Visibility } from "@mui/icons-material";
+import { userRequest } from "../requestMetods";
+import { DatagridElement } from "../elements/Datagrid";
 
 export const UserList = () => {
-  const [data, setData] = useState(userRows);
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const res = await userRequest.get("users");
+        console.log(res.data);
+        setUsers(res.data);
+        console.log(users);
+      } catch (error) {}
+    };
+    getUsers();
+  }, []);
 
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
-  };
+  const handleDelete = (id) => {};
 
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const columns = [
-    { field: "id", headerName: "ID", width: 50 },
+    { field: "_id", headerName: "ID", width: 200 },
     {
       field: "user",
-      headerName: "User",
-      flex: 1,
+      headerName: "Cliente",
+      width: 200,
       renderCell: (params) => {
         return (
           <ListUser>
             <Img src={params.row.avatar} alt="" />
-            {params.row.username}
+            {params.row.name}
           </ListUser>
         );
       },
     },
-    { field: "email", headerName: "Email", width: 150 },
-    {
-      field: "status",
-      headerName: "Status",
-      flex: 1,
-    },
-    {
-      field: "transaction",
-      headerName: "Transaction Volume",
-      flex: 1,
-    },
+    { field: "email", headerName: "Correo electrónico", width: 200 },
     {
       field: "action",
-      headerName: "Action",
-      flex: 2,
+      headerName: "Acciones",
+      flex: 1,
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/user/" + params.row.id}>
-              <ListEdit><Edit/></ListEdit>
+            <Link to={"/cliente/" + params.row._id}>
+              <ListEdit>
+                <Visibility />
+              </ListEdit>
             </Link>
             <DeleteI onClick={() => handleDelete(params.row.id)} />
           </>
@@ -57,21 +63,24 @@ export const UserList = () => {
 
   return (
     <Container>
-      <DataGrid
-        rows={data}
-        columns={columns}
-        disableSelectionOnClick
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        filterMode={"client"}
-      />
+      <TitleContainer>
+        <Title>Lista de clientes</Title>
+      </TitleContainer>
+      <DatagridElement columns={columns} data={users} />
     </Container>
   );
 };
-const Container = styled.div`
-  flex: 4;
-  width: 100%;
+const Title = styled.h1``;
+const TitleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
   margin: 10px;
+`;
+const Container = styled.div`
+  flex: 7;
+  padding: 20px;
 `;
 const ListUser = styled.div`
   display: flex;
@@ -88,8 +97,8 @@ const ListEdit = styled.button`
   border: none;
   border-radius: 5px;
   padding: 5px 10px;
-  background-color: #e5faf2;
-  color: #3bb077;
+  background-color: #ebf1fe;
+  color: #2a7ade;
   cursor: pointer;
   margin-right: 20px;
   font-size: 16px;

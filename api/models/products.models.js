@@ -11,6 +11,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "La descripción es requerida"],
   },
+  categories: {
+    type: Array,
+    required: [true, "La categoría es requerida"],
+  },
   price: {
     type: Number,
     required: [true, "El precio es requerido"],

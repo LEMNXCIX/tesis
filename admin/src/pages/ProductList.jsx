@@ -1,86 +1,33 @@
-import { DataGrid, esES } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { deleteProduct, getProducts } from "../redux/apiCalls";
-import { useDispatch, useSelector } from "react-redux";
+import { deleteProduct } from "../redux/apiCalls";
+import { useDispatch } from "react-redux";
 import { Modal } from "../components/Modal";
-import { Add, Close, Delete, Search } from '@mui/icons-material';
-import PropTypes from "prop-types";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
-
-
-//PARA TRADUCIR EL DATAGRID
-
-//FUNCION  DE BUSQUEDA EN EL DATA GRID - Inicio
-function escapeRegExp(value) {
-  return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-}
-
-function QuickSearchToolbar(props) {
-  return (
-    <Box
-      sx={{
-        p: 0.5,
-        pb: 0,
-      }}
-    >
-      <TextField
-        variant="standard"
-        value={props.value}
-        onChange={props.onChange}
-        placeholder="Busqueda"
-        InputProps={{
-          startAdornment: <Search fontSize="small" />,
-          endAdornment: (
-            <IconButton
-              title="Clear"
-              aria-label="Clear"
-              size="small"
-              style={{ visibility: props.value ? "visible" : "hidden" }}
-              onClick={props.clearSearch}
-            >
-              <Close fontSize="small" />
-            </IconButton>
-          ),
-        }}
-        sx={{
-          width: {
-            xs: 1,
-            sm: "auto",
-          },
-          m: (theme) => theme.spacing(1, 0.5, 1.5),
-          "& .MuiSvgIcon-root": {
-            mr: 0.5,
-          },
-          "& .MuiInput-underline:before": {
-            borderBottom: 1,
-            borderColor: "divider",
-          },
-        }}
-      />
-    </Box>
-  );
-}
-
-QuickSearchToolbar.propTypes = {
-  clearSearch: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
-};
-//FUNCION  DE BUSQUEDA EN EL DATA GRID - fin
+import { Add,  Delete  } from "@mui/icons-material";
+import { userRequest } from "../requestMetods";
+import { DatagridElement } from "../elements/Datagrid";
 
 export const ProductList = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.product.products);
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [identificador, setIdentificador] = useState();
-  useEffect(() => {
-    getProducts(dispatch);
-  }, [dispatch]);
+  const [products, setProducts] = useState([]);
 
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const res = await userRequest.get("products");
+        setProducts(res.data);
+      } catch (error) {}
+    };
+    getProducts();
+  }, []);
+
+  //Llevar al inicio de la pantalla
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const handleDelete = (id) => {
     deleteProduct(id, dispatch);
     cambiarEstadoModal(!estadoModal);
@@ -88,6 +35,7 @@ export const ProductList = () => {
     window.location.reload();
   };
 
+  //Definimos las columas que se van a renderizar en el data grid
   const columns = [
     { field: "_id", headerName: "ID", width: 200 },
     {
@@ -97,17 +45,17 @@ export const ProductList = () => {
       renderCell: (params) => {
         return (
           <Item>
-            <Img src={params.row.img} alt="" />
-            {params.row.title}
+            <Img src={params.row.image} alt="" />
+            {params.row.name}
           </Item>
         );
       },
     },
-    { field: "inStock", headerName: "Stock", width: 70 },
+    { field: "categories", headerName: "Categoría", width: 100 },
     {
-      field: "cantidad",
+      field: "stock",
       headerName: "Cantidad",
-      width: 80,
+      width: 100,
     },
     {
       field: "price",
@@ -116,12 +64,12 @@ export const ProductList = () => {
     },
     {
       field: "action",
-      headerName: "Action",
-      width: 150,
+      headerName: "Acciones",
+      flex:1,
       renderCell: (params) => {
         return (
           <>
-            <Link to={"/producto/" + params.row._id}>
+            <Link to={"/producto/edit/" + params.row._id}>
               <Edit>Edit</Edit>
             </Link>
             <DeleteI
@@ -135,62 +83,23 @@ export const ProductList = () => {
       },
     },
   ];
- //ELEMENTOS  DE BUSQUEDA EN EL DATA GRID
-  const [searchText, setSearchText] = useState('');
-  const [rows, setRows] = useState(products);
-
-  const requestSearch = (searchValue) => {
-    setSearchText(searchValue);
-    const searchRegex = new RegExp(escapeRegExp(searchValue), 'i');
-    const filteredRows = products.filter((row) => {
-      return Object.keys(row).some((field) => {
-        return searchRegex.test(row[field].toString());
-      });
-    });
-    setRows(filteredRows);
-  };
-
-  useEffect(() => {
-    setRows(products);
-  }, [products]);
-
 
   return (
     <Container>
       <TitleContainer>
         <Title>Lista de productos</Title>
-        <Link style={{textDecoration:"none"}} to="/nuevoProducto">
+        <Link style={{ textDecoration: "none" }} to="/producto/nuevo">
           <AddButton>
             <Add /> Nuevo
           </AddButton>
         </Link>
       </TitleContainer>
-      <DataGridContainer>
-        {/* rows contiene los productos, esta definido en un estado de react mas arriba */}
-        <DataGrid
-          rows={rows}
-          disableSelectionOnClick
-          getRowId={(row) => row._id}
-          columns={columns}
-          rowsPerPageOptions={[3]}
-          pageSize={5}
-          localeText={esES.components.MuiDataGrid.defaultProps.localeText}
-          disableExtendRowFullWidth={true}
-          components={{ Toolbar: QuickSearchToolbar }}
-          componentsProps={{
-            toolbar: {
-              value: searchText,
-              onChange: (event) => requestSearch(event.target.value),
-              clearSearch: () => requestSearch(''),
-            },
-          }}
-        />
-      </DataGridContainer>
+      <DatagridElement columns={columns} data={products} />
 
       <Modal
         estado={estadoModal}
         cambiarEstado={cambiarEstadoModal}
-        titulo={"Eliiminar producto" + identificador}
+        titulo={"Eliminar producto" + identificador}
         mostrarHeader={true}
         mostrarOverlay={true}
         posicionModalX={"center"}
@@ -207,7 +116,8 @@ export const ProductList = () => {
   );
 };
 const Container = styled.div`
-  flex: 4;
+    flex: 7;
+  padding: 20px;
 `;
 const Item = styled.div`
   display: flex;
@@ -275,12 +185,8 @@ const AddButton = styled.button`
   Add {
     color: #465d40;
   }
-  &:hover{
+  &:hover {
     background-color: #a7db9b;
   }
 `;
 const Title = styled.h1``;
-const DataGridContainer = styled.div`
-  height: 500px;
-  margin: 15px;
-`;
