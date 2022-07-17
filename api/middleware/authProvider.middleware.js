@@ -24,20 +24,17 @@ const getProfile = (accesToken, refreshToken, profile, done) => {
   done(null, { profile });
 };
 
-const useGoogleStrategy = () => {
-  return new GoogleStrategy(
-    {
-      clientId: oauthClientID,
-      clientSecret: oauthClientSecret,
-      callbackURL: callbackUrl("google"),
-    },
-    getProfile
-  );
-};
+const useGoogleStrategy = () =>{
+  return new GoogleStrategy({
+      clientID:oauthClientID,
+      clientSecret:oauthClientSecret,
+      callbackURL:callbackUrl("google")
+  },getProfile)
+}
 const useFacebookStrategy = () => {
   return new FacebookStrategy(
     {
-      clientId: facebookAppID,
+      clientID: facebookAppID,
       clientSecret: facebookAppSecret,
       callbackURL: callbackUrl("facebook"),
       profileFields: ["id", "emails", "displayName", "name", "photos"],
@@ -61,7 +58,7 @@ const useTwitterStrategy = () => {
 const useGitHubStrategy = () => {
   return new GitHubStrategy(
     {
-      clientId: githubClientID,
+      clientID: githubClientID,
       clientSecret: githubClientSecret,
       callbackURL: callbackUrl("github"),
       scope: ["user:email"],
