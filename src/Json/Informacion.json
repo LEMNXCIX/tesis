@@ -31,21 +31,21 @@
   "categorias": [
     {
       "id": 1,
-      "img": "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "title": "SHIRT STYLE!",
-      "cat": "gatitos"
+      "img": "https://media.glamour.mx/photos/61905e66a6e030d6480f697d/master/w_1600%2Cc_limit/249106.jpg",
+      "title": "CREMAS",
+      "cat": "cremas"
     },
     {
       "id": 2,
-      "img": "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-      "title": "LOUNGEWEAR LOVE",
-      "cat": "men"
+      "img": "https://i.blogs.es/5edb02/14-cremas-hidratantes-para-el-rostro-a-buen-precio/450_1000.webp",
+      "title": "HIDRATANTES",
+      "cat": "hidratantes"
     },
     {
       "id": 3,
-      "img": "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      "title": "LIGHT JACKETS",
-      "cat": "cremas"
+      "img": "https://www.garnierusa.com/-/media/project/loreal/brand-sites/garnier/usa/us/articles/skincare/4-types-of-face-masks-you-need-in-your-skin-care-routine/4-types-of-face-masks-you-need-in-your-skin-care-routine.png?rev=dd46a5ff62f54de8aaf71ffb2956dfba",
+      "title": "MASCARILLAS",
+      "cat": "mascarilas"
     }
   ]
 }

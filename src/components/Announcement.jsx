@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import { Close } from '@mui/icons-material';
+import { Close } from "@mui/icons-material";
 import { mensajeApiCall } from "../redux/apiCalls";
 import styled from "styled-components";
 
-export const Announcement = () => {
+export const Announcement = ({ text, close, color }) => {
   const [estado, cambiarEstado] = useState(true);
   return (
     <>
       {estado && (
-        <Container>
+        <Container color={color}>
           <Text>
-            Oferta!! Obtén el 10% de descuento por compras superiores a $50 {mensajeApiCall}
+            {text
+              ? text
+              : "Encuentra productos de belleza, cosmética, cuidado personal y mucho mas."}
           </Text>
-          <Cerrar onClick={() => cambiarEstado(false)}>
-            <Close  fontSize="inherit"/>
-          </Cerrar>
+          {close && (
+            <Cerrar onClick={() => cambiarEstado(false)}>
+              <Close fontSize="inherit" />
+            </Cerrar>
+          )}
         </Container>
       )}
     </>
@@ -22,7 +26,8 @@ export const Announcement = () => {
 };
 const Container = styled.div`
   position: relative;
-  background-color: #ffefc9;
+  
+  background-color: ${props => props.color ? props.color : "#ffefc9"};
   color: #625737;
   align-items: center;
   display: flex;
@@ -30,9 +35,9 @@ const Container = styled.div`
   margin: 0;
 `;
 const Text = styled.div`
-text-align: center;
-margin: 10px;
-width: 90%;
+  text-align: center;
+  margin: 10px;
+  width: 90%;
   font-size: 12px;
   font-weight: 500;
 `;

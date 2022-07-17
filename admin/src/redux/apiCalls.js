@@ -26,7 +26,6 @@ export const login = async (dispatch, user) => {
           mensajeApiCall = error.response.data;
         }
       });
-    console.log(res.data.user.role);
     res.data.user.role > 1
       ? dispatch(loginSuccess(res.data))
       : (mensajeApiCall = {
@@ -74,10 +73,12 @@ export const deleteProduct = async (id, dispatch) => {
 
 //Actualizar Producto
 export const updateProduct = async (id, product, dispatch) => {
+  console.log(id)
   dispatch(updateProductStart());
   try {
     // update
-    const res = await userRequest.put(`/product/${id}`, product);
+    
+    const res = await userRequest.put(`/products/${id}`, product);
     dispatch(updateProductSucces(res.data));
   } catch (err) {
     dispatch(updateProductFailure());

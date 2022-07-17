@@ -6,3 +6,4 @@ export const mobile = (props) => {
     }
   `;
 };
+export const mobileBool = true;

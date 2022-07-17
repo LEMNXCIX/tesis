@@ -45,7 +45,7 @@ export const Home = () => {
       </Slideshow>
       <Categories />
       <Products />
-      <Newsletter />
+      {/* <Newsletter /> */}
       <Footer />
     </>
   );

@@ -20,7 +20,7 @@ export const Cart = () => {
             <TopText>Shopping bag({cart.cantidad})</TopText>
             <TopText>Lista de deseos (0)</TopText>
           </TopTexts>
-          <TopButton type="filled">Pagar ahora</TopButton>
+          <TopButton type="filled">Ordenar ahora</TopButton>
         </Top>
         <Bottom>
           <Info>
@@ -70,9 +70,9 @@ export const Cart = () => {
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>$ 80</SummaryItemPrice>
+              <SummaryItemPrice>$</SummaryItemPrice>
             </SummaryItem>
-            <Button>Pagar ahora</Button>
+            <Button>Ordenar ahora</Button>
           </Summary>
         </Bottom>
       </Wrapper>

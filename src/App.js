@@ -29,6 +29,11 @@ export const App = () => {
 
   return (
     <Router>
+      <Announcement
+        text={"Esta es una version aun en desarrollo"}
+        close={false}
+        color={"#000"}
+      />
       <Navbar user={user} />
       <Announcement />
       <Routes>

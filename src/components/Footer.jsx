@@ -8,19 +8,16 @@ export const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>Neutra.</Logo>
+        <Logo>Neutra. Skin Shop</Logo>
         <Description>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci
-          perferendis, dolore earum tempore cum aut doloremque tenetur deserunt
-          est quae, aspernatur vero. Accusamus eligendi obcaecati tempora
-          exercitationem iure reprehenderit suscipit.
+        Belleza, cosmética y cuidado personal.
         </Description>
         <SocialContainer>
           <SocialIcon color="4267B2">
-            <Facebook />
+            <Facebook style={{color:"black"}}/>
           </SocialIcon>
           <SocialIcon color="E1306C">
-            <Instagram />
+            <Instagram  style={{color:"black"}}/>
           </SocialIcon>
         </SocialContainer>
       </Left>
@@ -51,27 +48,28 @@ export const Footer = () => {
       <Right>
         <Title>Contacto</Title>
         <ContactItem>
-          <SocialIcon color="000000">
-            <LocationOn />
+          <SocialIcon color="665351">
+            <LocationOn  style={{color:"black"}} />
           </SocialIcon>
-          Santo Domingo, por ahi
+          Santo Domingo - Ecuador
         </ContactItem>
         <ContactItem>
-          <SocialIcon color="000000">
-            <WhatsApp />
+          <Link to={{pathname: "https://example.com" }} target="_blank"><SocialIcon color="665351">
+            <WhatsApp  style={{color:"black"}}  />
           </SocialIcon>
-          +593 98 7654 321
+          +593 96 816 1789</Link>
+          
         </ContactItem>
         <ContactItem>
-          <SocialIcon color="000000">
-            <Email />
+          <SocialIcon color="665351">
+            <Email  style={{color:"black"}} />
           </SocialIcon>
-          contacto@micorreo.com
+        neutraskinshop@gmail.com
         </ContactItem>
-        <Payment
+        {/* <Payment
           draggable="false"
           src="https://www.citypng.com/public/uploads/preview/-11597193844xtj2mnv37b.png"
-        />
+        /> */}
       </Right>
     </Container>
   );

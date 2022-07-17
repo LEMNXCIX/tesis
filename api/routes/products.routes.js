@@ -41,14 +41,17 @@ function products(app) {
 
   router.get("/one/:id", async (req, res) => {
     const id = req.params.id;
-
     const result = await productsServ.getOne(id);
     return res.status(result.error ? 400 : 200).json(result);
   });
 
   router.delete("/:id", authMiddleware(1), async (req, res) => {
     const result = await productsServ.delete(req.params.id, req.user.id);
-
+    return res.status(result.success ? 200 : 403).json(result);
+  });
+  
+  router.put("/:id", authMiddleware(1), async (req, res) => {
+    const result = await productsServ.update(req.params.id, req.body);
     return res.status(result.success ? 200 : 403).json(result);
   });
 }

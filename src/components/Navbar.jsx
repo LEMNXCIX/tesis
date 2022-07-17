@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { mobile } from "../responsive";
+import { mobile, mobileBool } from "../responsive";
 import {
   Search,
   ShoppingCart,
@@ -53,30 +53,28 @@ export const Navbar = ({ user }) => {
           {!user && (
             <MenuItems onClick={() => cambiarEstadoModal(!estadoModal)}>
               <TipoBoton>
-                {" "}
                 <LogIn />
-                ㅤIniciar Sesión
+                {mobileBool ? "" : "ㅤIniciar Sesión"}
               </TipoBoton>
             </MenuItems>
           )}
 
-          {user && (
+          {user && user.isAdmin &&   (
             <MenuItems>
               <TipoBoton>
                 <AdminPanelSettings />
-                ㅤAdmin Panel
+                {mobileBool ? "" : " ㅤAdmin Panel"}
               </TipoBoton>
             </MenuItems>
           )}
-          {user &&
-            user.isAdmin && (
-              <MenuItems onClick={() => funcionCerrar()}>
-                <TipoBoton>
-                  <Logout />
-                  ㅤCerrar Sesión
-                </TipoBoton>
-              </MenuItems>
-            )}
+          {user && (
+            <MenuItems onClick={() => funcionCerrar()}>
+              <TipoBoton>
+                <Logout />
+                ㅤCerrar Sesión
+              </TipoBoton>
+            </MenuItems>
+          )}
           <Modal
             estado={estadoModal}
             cambiarEstado={cambiarEstadoModal}

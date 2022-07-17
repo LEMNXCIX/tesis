@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 export const Topbar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.currentUser);
+  console.log("====")
+  console.log(user.user)
   return (
     <Container>
       <Wrapper>
@@ -17,7 +19,7 @@ export const Topbar = () => {
           <Logo>Neutra.Admin</Logo>
         </Left>
         <Rigth>
-          <IconContainer>
+          {/* <IconContainer>
             <FaBell />
             <IconBadge>2</IconBadge>
           </IconContainer>
@@ -27,9 +29,10 @@ export const Topbar = () => {
           </IconContainer>
           <IconContainer>
             <MdSettings />
-          </IconContainer>
+          </IconContainer> */}
+          <p>Bienvenido: {user.user.name}</p>
           <Avatar
-            src="https://images.pexels.com/photos/1526814/pexels-photo-1526814.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            src={user.user.image}
             alt=""
           />
           {user && (
@@ -97,6 +100,7 @@ const Avatar = styled.img`
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
+  margin-left: 10px;
 `;
 const MenuItems = styled.div`
   display: flex;
