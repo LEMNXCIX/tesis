@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:4000/api/";
+//const BASE_URL = "http://localhost:4000/api/";
+const BASE_URL = "https://neutra.ec/api"
 let TOKEN ="";
 const user = localStorage.getItem("persist:root");
 if(user !== null){

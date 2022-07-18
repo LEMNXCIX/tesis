@@ -115,6 +115,9 @@ class User {
       return dbError(error);
     }
   }
+  async getLastUsers(){
+    
+  }
 }
 
 module.exports = User;

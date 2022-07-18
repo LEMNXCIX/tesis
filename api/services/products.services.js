@@ -63,6 +63,7 @@ class Products {
       };
     }
   }
+
   async update(id, data) {
     try {
       const user = await ProductsModel.findByIdAndUpdate(id, data);
@@ -101,15 +102,17 @@ class Products {
       return {
         success: true,
         product,
-        message: "Deleted succesfully",
+        message: "Se ha borrado el producto",
       };
     } catch (error) {
       console.log(error);
       return {
         success: false,
-        message: "An error ocurred. Maybe you are not the owner",
+        message: "A ocurrido un error al borrar el producto",
       };
     }
   }
+
+
 }
 module.exports = Products;
